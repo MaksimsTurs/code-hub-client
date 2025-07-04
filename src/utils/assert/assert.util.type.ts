@@ -1,0 +1,1 @@
+export type TPossibleErrors = ErrorConstructor | TypeErrorConstructor | SyntaxErrorConstructor | RangeErrorConstructor | EvalErrorConstructor;

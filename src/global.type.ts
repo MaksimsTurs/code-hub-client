@@ -1,0 +1,1 @@
+export type TJSPrimitiveTypes = string | number | boolean | undefined | null;

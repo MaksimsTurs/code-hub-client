@@ -1,0 +1,92 @@
+@use "@/scss/variabel" as *;
+
+/*  
+	display:         <value>;
+	align-items:     <value>;
+	justify-content: <value>;
+	gap:             <value>;
+*/
+
+.fr-n-n-n {
+	display: flex;
+	align-items: normal;
+	justify-content: normal;
+	gap: 0;
+}
+
+.fr-n-c-n {
+	display: flex;
+	align-items: normal;
+	justify-content: center;
+	gap: 0;
+}
+
+.fr-n-n-xs {
+	display: flex;
+	align-items: normal;
+	justify-content: normal;
+	gap: $var-gap-xs;
+}
+
+.fr-n-n-m {
+	display: flex;
+	align-items: normal;
+	justify-content: normal;
+	gap: $var-gap-m;
+}
+
+.fr-n-n-xxxxl {
+	display: flex;
+	align-items: normal;
+	justify-content: normal;
+	gap: $var-gap-xxxxl;
+}
+
+.fr-c-n-xs {
+	display: flex;
+	align-items: center;
+	justify-content: normal;
+	gap: $var-gap-xs;
+}
+
+.fr-c-n-m {
+	display: flex;
+	align-items: center;
+	justify-content: normal;
+	gap: $var-gap-m;
+}
+
+.fr-c-c-n {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0;
+}
+
+.fr-c-c-m {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: $var-gap-m;
+}
+
+.fr-n-sp-xs {
+	display: flex;
+	align-items: normal;
+	justify-content: space-between;
+	gap: $var-gap-xs;
+}
+
+.fr-c-sp-xs {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: $var-gap-xs;
+}
+
+.fr-n-fe-n {
+	display: flex;
+	align-items: normal;
+	justify-content: flex-end;
+	gap: 0;
+}

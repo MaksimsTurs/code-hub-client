@@ -1,0 +1,49 @@
+@forward "./reset/default";
+@forward "./reset/input";
+
+@forward "./global/flex-column.scss";
+@forward "./global/flex-row.scss";
+
+@use "./mixin" as *;
+@use "./variabel.scss" as *;
+
+#root {
+	padding: $var-padding-xxl;
+	min-height: 100%;
+	background-image: url(../Background-2.webp);
+	object-fit: cover;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+.line {
+	display: flex;
+	gap: 0.1rem;
+	width: 100%;
+}
+
+.keyword_const {
+	color: #e5c07b !important;
+}
+
+.punctuation_assign {
+	color: #56B6C2;
+}
+
+.specific_string_literal {
+	color: #98C379;
+}
+
+.specific_identifier {
+	color: #e06c75;
+}
+
+.specific_keyword {
+	color: #C678DD;
+}
+
+.keyword_function {
+	color: #61afef;
+}

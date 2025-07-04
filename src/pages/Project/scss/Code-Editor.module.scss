@@ -1,0 +1,18 @@
+@use "@/scss/variabel" as *;
+@use "@/scss/mixin" as *;
+
+.code_editor_container {
+	@include component-container($var-padding-l $var-padding-xxl);
+	flex-grow: 1;
+
+	& > div:focus {
+		outline: none;
+		height: 100%;
+	}
+
+	& > textarea {
+		width: 0;
+		height: 0;
+		opacity: 0;
+	}
+}

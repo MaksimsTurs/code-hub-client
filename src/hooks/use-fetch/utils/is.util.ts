@@ -1,0 +1,1 @@
+export const isUndefinedOrNull = (maybeUndefinedOrNull: any): boolean => maybeUndefinedOrNull === null || maybeUndefinedOrNull === undefined;

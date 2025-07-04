@@ -1,0 +1,171 @@
+@use "./variabel" as *;
+
+@mixin abs-top-left(
+	$top: 0%,
+	$left: 0%, 
+	$z-index: 2, 
+	$width: 100%, 
+	$height: 100%
+) {
+  left: $left;
+  top: $top;
+  width: $width;
+  height: $height;
+  z-index: $z-index;
+  position: absolute;
+}
+
+@mixin abs-bottom-left(
+	$bottom: 0%,
+	$left: 0%, 
+	$z-index: 2, 
+	$width: 100%, 
+	$height: 100%
+) {
+  left: $left;
+  bottom: $bottom;
+  width: $width;
+  height: $height;
+  z-index: $z-index;
+  position: absolute;
+}
+
+@mixin abs-top-right(
+	$top: 0%, 
+	$right: 0%,
+	$z-index: 2, 
+	$width: 100%, 
+	$height: 100%
+) {
+  right: $right;
+  top: $top;
+  width: $width;
+  height: $height;
+  z-index: $z-index;
+  position: absolute;
+}
+
+@mixin abs-bottom-right(
+	$right: 0%, 
+	$bottom: 0%, 
+	$z-index: 2, 
+	$width: 100%, 
+	$height: 100%
+) {
+  right: $right;
+  bottom: $bottom;
+  width: $width;
+  height: $height;
+  z-index: $z-index;
+  position: absolute;
+}
+
+@mixin fix-top-left(
+	$top: 0%,
+	$left: 0%, 
+	$z-index: 2, 
+	$width: 100%, 
+	$height: 100%
+) {
+  left: $left;
+  top: $top;
+  width: $width;
+  height: $height;
+  z-index: $z-index;
+  position: fixed;
+}
+
+@mixin fix-bottom-left(
+	$bottom: 0%,
+	$left: 0%, 
+	$z-index: 2, 
+	$width: 100%, 
+	$height: 100%
+) {
+  left: $left;
+  bottom: $bottom;
+  width: $width;
+  height: $height;
+  z-index: $z-index;
+  position: fixed;
+}
+
+@mixin fix-top-right(
+	$top: 0%, 
+	$right: 0%,
+	$z-index: 2, 
+	$width: 100%, 
+	$height: 100%
+) {
+  right: $right;
+  top: $top;
+  width: $width;
+  height: $height;
+  z-index: $z-index;
+  position: fixed;
+}
+
+@mixin fix-bottom-right(
+	$right: 0%, 
+	$bottom: 0%, 
+	$z-index: 2, 
+	$width: 100%, 
+	$height: 100%
+) {
+  right: $right;
+  bottom: $bottom;
+  width: $width;
+  height: $height;
+  z-index: $z-index;
+  position: fixed;
+}
+
+
+@mixin text-overflow($width: 100%, $text-overflow: ellipsis) {
+  width: $width;
+  text-overflow: $text-overflow;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin keyframe-bubble-with-opacity(
+	$from-x, $from-y,
+	$from-opacity,
+	$to-x, $to-y,
+	$to-opacity
+) {
+	@keyframes bubble-with-opacity {
+		from {
+			transform: translate($from-x, $from-y);
+			opacity: $from-opacity;
+		}	
+
+		to {
+			transform: translate($to-x, $to-y);
+			opacity: 1;
+		}
+	}
+}
+
+@mixin keyframe-lightning($box-shadow-0, $box-shadow-50, $box-shadow-100) {
+	@keyframes lightning {
+		0% {
+			box-shadow: $box-shadow-0;
+		}
+	
+		50% {
+			box-shadow: $box-shadow-50;
+		}
+	
+		100% {
+			box-shadow: $box-shadow-100;
+		}		
+	}
+}
+
+@mixin component-container($padding) {
+	padding: $padding;
+	box-shadow: $var-box-shadow-container;
+	border: $var-border-white-hight-transparent;
+	background-color: $var-color-black-hight-transparent;
+}

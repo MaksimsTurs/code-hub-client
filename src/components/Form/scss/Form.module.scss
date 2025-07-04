@@ -1,0 +1,9 @@
+@use "@/scss/variabel" as *;
+@use "@/scss/mixin" as *;
+
+.form_container {
+	@include component-container($var-padding-xxxxl $var-padding-xxxxl);
+	width: calc($var-size-xxxxl * 20);
+	max-width: 100%;
+	flex-shrink: 1;
+}

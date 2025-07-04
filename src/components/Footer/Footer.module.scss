@@ -1,0 +1,60 @@
+@use "@/scss/variabel" as *;
+@use "@/scss/mixin" as *;
+
+.footer_container {
+	@include component-container($var-padding-xxxl $var-padding-xxxxl);
+
+	.footer_websitename {
+		font-size: $var-font-xxxxl;
+		margin-bottom: $var-margin-m;
+		font-weight: bolder;
+	}
+
+	.footer_lists_container {
+		.footer_list_title {
+			padding-bottom: $var-padding-s;
+			border-bottom: $var-border-white-hight-transparent;	
+			width: fit-content;
+		}
+
+		& > div > ul > li:hover > a {
+      color: $var-color-white-hight-transition;
+		}
+	}
+
+	.footer_copyright {
+	  border-top: $var-border-white-hight-transparent;
+		margin-top: $var-margin-m;
+		padding-top: $var-padding-m;
+		color: $var-color-white-hight-transition;
+	}
+
+	.footer_media_icon {
+		width: $var-size-xxxxl;
+		padding: $var-padding-s $var-padding-s;
+		border-radius: $var-border-radius-xxxxl;
+    transition: 
+		  background-color $var-transition-time-xs,
+			fill $var-transition-time-xs,
+			stroke $var-transition-time-xs;
+		box-shadow: 3px 3px 0 0 $var-color-black-hight-transparent;
+		display: flex;
+		border: 2px solid white;
+		align-items: center;
+		justify-content: center;
+
+		&:hover {
+      transition: background-color $var-transition-time-xs;
+			background-color: white;
+		}
+
+		&:hover > svg {
+			transition: 
+		    background-color $var-transition-time-xs,
+			  fill $var-transition-time-xs,
+			  stroke $var-transition-time-xs;
+			fill: #1da1f2;
+			stroke: #1da1f2;
+		}
+	}
+}

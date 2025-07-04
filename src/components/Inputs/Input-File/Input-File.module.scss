@@ -1,0 +1,25 @@
+@use "@/scss/variabel" as *;
+@use "@/scss/mixin" as *;
+
+.file_input_container {
+	cursor: pointer;
+	border: $var-border-white-hight-transparent;
+	padding: $var-padding-l;
+	box-shadow: $var-box-shadow-container;
+	width: calc($var-size-xxxxl * 4.5);
+	height: calc($var-size-xxxxl * 4);
+
+	& > svg {
+		width: $var-size-xl;
+		height: $var-size-xl;
+	}
+
+	.file_input_upload_container {
+		position: relative;
+
+		& > img {
+			display: block;
+			width: 100%;
+		}
+	}
+}

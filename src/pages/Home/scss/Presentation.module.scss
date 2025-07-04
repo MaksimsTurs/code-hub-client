@@ -1,0 +1,83 @@
+@use "@/scss/variabel" as *;
+@use "@/scss/mixin" as *;
+
+.presentation_container {
+	@include component-container($var-padding-l $var-padding-xxxxl);
+	animation: bubble-with-opacity $var-transition-time-xxxxl forwards;
+
+	.presentation_img {
+		border-radius: $var-border-radius-xxxxl;
+		width: 100%;
+		height: 12rem;
+		object-fit: cover;
+		box-shadow: 0 0 10px 2px #00000066;
+	}
+
+	& > div > h2 {
+		font-size: calc($var-font-xxxxl * 2);
+		font-weight: 700;
+		text-align: center;
+	}
+
+	.presentation_description {
+		text-align: center;
+		width: 40rem;
+	}
+
+	.presintation_actions_container {
+		margin-top: $var-margin-l;
+
+		& > a {
+			padding: $var-padding-l $var-padding-xxl;
+			color: $var-color-hell-blue;
+			transition: border-radius $var-transition-time-s;
+			animation: lightning $var-transition-time-xxxxl infinite;
+			border: 1px solid $var-color-hell-blue;
+			position: relative;
+			overflow: hidden;
+			z-index: 0;
+
+			&:hover::after {
+				transition: backdrop-filter $var-transition-time-s;
+				backdrop-filter: blur(50px);
+			}
+			
+			&:hover {
+				transition: border-radius $var-transition-time-s;
+				border-radius: $var-border-radius-xxxxl;
+			}
+
+			&::before {
+				content: "";
+				@include abs-top-left(0%, -50%, 1, 1rem, 200%);
+				animation: background-position-translation $var-transition-time-xxl infinite;
+				transform: rotate(-45deg) $var-translate-center-center;
+				background-color: $var-color-hell-blue;
+				z-index: -2;
+			}
+
+			&::after {
+				content: "";
+				@include abs-top-left(0%, 0%, 0);
+				transition: backdrop-filter $var-transition-time-s;
+			}
+		}
+	}
+}
+
+@keyframes background-position-translation {
+	from {
+		left: 0%;
+	}
+
+	to {
+		left: 200%;
+	}
+}
+
+@include keyframe-bubble-with-opacity(0px, 50px, 0, 0px, 0px, 1);
+@include keyframe-lightning(
+	0 0 5px 4px $var-color-hell-blue-hight-transparent,
+	0 0 10px 5px $var-color-hell-blue-hight-transparent,
+	0 0 5px 4px $var-color-hell-blue-hight-transparent
+);

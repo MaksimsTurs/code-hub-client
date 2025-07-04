@@ -1,0 +1,29 @@
+@use "@/scss/variabel" as *;
+@use "@/scss/mixin" as *;
+
+.project_container {
+	border-bottom: $var-border-white-hight-transparent;
+	padding-bottom: $var-padding-m;
+	cursor: pointer;
+	transition: all 0.2s;
+
+	&:last-child {
+		border-bottom: none;
+		padding-bottom: none;
+	}
+
+	&:hover {
+		transition: all 0.2s;
+	}
+
+	.project_visibility_type {
+		padding: $var-padding-xs $var-padding-l;
+		font-size: $var-font-m;
+		border-radius: $var-border-radius-xxxxl;
+		background-color: $var-color-black-hight-transparent;
+	}
+
+	.project_description {
+		color: $var-color-white-hight-transition;
+	}
+}

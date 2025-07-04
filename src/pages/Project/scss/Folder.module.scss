@@ -1,0 +1,21 @@
+@use "@/scss/variabel" as *;
+@use "@/scss/mixin" as *;
+
+.folder_container {
+	cursor: pointer;
+	
+	.folder_name_container {
+		padding: $var-padding-s;
+		transform: background-color $var-transition-time-s;
+		border-radius: $var-border-radius-l;
+
+		&:hover {
+			transform: background-color $var-transition-time-s;
+			background-color: $var-color-black-hight-transparent;
+		}
+
+		& > svg {
+			fill: $var-color-white-hight-transition;
+		}
+	}
+}

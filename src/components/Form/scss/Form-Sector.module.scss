@@ -1,0 +1,8 @@
+@use "@/scss/variabel" as *;
+@use "@/scss/mixin" as *;
+
+.form_section > h2 {
+	margin-bottom: $var-margin-m;
+	padding-bottom: $var-padding-m;
+	border-bottom: $var-border-white-hight-transparent;
+}

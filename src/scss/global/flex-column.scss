@@ -1,0 +1,48 @@
+@use "@/scss/variabel" as *;
+
+/*  
+	display:         <value>;
+	align-items:     <value>;
+	justify-content: <value>;
+	gap:             <value>;
+*/
+
+.fc-n-n-xs {
+	display: flex;
+	align-items: normal;
+	justify-content: normal;
+	flex-direction: column;
+	gap: $var-gap-xs;
+}
+
+.fc-n-n-m {
+	display: flex;
+	align-items: normal;
+	justify-content: normal;
+	flex-direction: column;
+	gap: $var-gap-m;
+}
+
+.fc-n-n-l {
+	display: flex;
+	align-items: normal;
+	justify-content: normal;
+	flex-direction: column;
+	gap: $var-gap-l;
+}
+
+.fc-n-sp-xs {
+	display: flex;
+	align-items: normal;
+	justify-content: space-between;
+	flex-direction: column;
+	gap: $var-gap-xs;
+}
+
+.fc-c-n-m {
+	display: flex;
+	align-items: center;
+	justify-content: normal;
+	flex-direction: column;
+	gap: $var-gap-m;
+}

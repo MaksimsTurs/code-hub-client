@@ -1,0 +1,50 @@
+@use "@/scss/variabel" as *;
+@use "@/scss/mixin" as *;
+
+.text_input_container_with_error {
+	input[type="text"],
+	input[type="number"],
+	input[type="email"],
+	input[type="password"] {
+		color: $var-color-hell-red;
+		border: 1px solid $var-color-hell-red !important;
+
+		&::placeholder {
+			color: $var-color-hell-red !important;
+		}
+	}
+}
+
+.text_input_container {
+	input[type="text"],
+	input[type="number"],
+	input[type="email"],
+	input[type="password"] {
+		@include component-container($var-padding-m $var-padding-xl);
+		background: none;
+		width: 100%;
+		transition: all 0.3s;
+		position: relative;
+		z-index: 0;
+		color: white;
+	
+		&::placeholder {
+			color: white;
+		}
+	}
+}
+
+.text_input_error_container {
+	background: $var-color-hell-red-hight-transparent;
+	padding: $var-padding-s $var-padding-l;
+	
+	& > p {
+		color: $var-color-hell-red;
+	}
+
+	& > svg {
+		stroke: $var-color-hell-red;
+		width: $var-size-s;
+		height: $var-size-s;
+	}
+}

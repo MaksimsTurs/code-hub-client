@@ -1,0 +1,1 @@
+export type TSerializeErrorCallback<E> = (error: Error) => E;

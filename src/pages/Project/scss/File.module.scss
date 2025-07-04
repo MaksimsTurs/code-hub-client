@@ -1,0 +1,14 @@
+@use "@/scss/variabel" as *;
+@use "@/scss/mixin" as *;
+
+.file_container {
+	padding: $var-padding-s;
+	transition: background-color $var-transition-time-s;
+	transform: background-color $var-transition-time-s;
+	border-radius: $var-border-radius-l;
+
+	&:hover {
+		transform: background-color $var-transition-time-s;
+		background-color: $var-color-black-hight-transparent;
+	}
+}

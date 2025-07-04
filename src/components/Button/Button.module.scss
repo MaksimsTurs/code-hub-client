@@ -1,0 +1,21 @@
+@use "@/scss/variabel" as *;
+@use "@/scss/mixin" as *;
+
+.button {
+	font-size: $var-font-l;
+	border: $var-border-white-hight-transparent;
+	padding: $var-padding-s $var-padding-l;	
+	box-shadow: $var-box-shadow-container;
+	transition: all $var-transition-time-s;
+	
+	&:hover {
+		transition: all $var-transition-time-s;
+		background-color: $var-color-black-hight-transparent;
+		box-shadow: 3px 3px 0 0 #00000033;
+	}
+
+	&:disabled {
+		transition: all $var-transition-time-s;
+		background-color: #ffffff33;
+	}
+}
