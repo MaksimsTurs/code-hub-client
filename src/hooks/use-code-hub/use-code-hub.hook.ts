@@ -1,9 +1,9 @@
-import type { TStoreRootState, TStoreDispatch } from "@/reducers/reducer.store";
+import type { TStoreRootState, TStoreDispatch } from "@reducer/reducer.store";
 import type { TUseCodeHubState, TFileExplorerFile } from "./use-code-hub.hook.type";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { selectFile } from "@/reducers/use-code-hub/use-code-hub.slice";
+import { selectFile } from "@reducer/use-code-hub/use-code-hub.slice";
 
 export default function useCodeHub() {
 	const dispatch = useDispatch<TStoreDispatch>();

@@ -21,6 +21,14 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "paths": { "@/*": ["./src/*"] }
+    "paths": { 
+			"@root/*":      ["./src/*"],
+			"@component/*": ["./src/components/*"],
+			"@hook/*":      ["./src/hooks/*"],
+			"@page/*":      ["./src/pages/*"],
+			"@reducer/*":   ["./src/reducers/*"],
+			"@scss/*":      ["./src/scss/*"],
+			"@util/*":      ["./src/utils/*"]
+		}
   },
 }

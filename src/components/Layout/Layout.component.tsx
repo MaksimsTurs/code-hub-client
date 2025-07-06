@@ -1,4 +1,4 @@
-import useRequestAll from "@/hooks/use-fetch/use-request-all.hook";
+import useRequestAll from "@hook/use-fetch/use-request-all.hook";
 
 import { Suspense } from "react";
 

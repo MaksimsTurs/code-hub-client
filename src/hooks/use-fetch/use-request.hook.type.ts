@@ -1,4 +1,4 @@
-import type { TUseFetchCacheState } from "@/reducers/use-fetch/use-fetch.slice.type";
+import type { TUseFetchCacheState } from "@reducer/use-fetch/use-fetch.slice.type";
 
 export type TUseRequestReturn<T = any> = {
 	request: () => void

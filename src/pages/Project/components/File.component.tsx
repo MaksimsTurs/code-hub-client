@@ -1,10 +1,10 @@
 import type { JSX } from "react";
 import type { TFileExplorerFileProps } from "../Page.type.page";
-import type { TFileExplorerFile } from "@/hooks/use-code-hub/use-code-hub.hook.type";
+import type { TFileExplorerFile } from "@hook/use-code-hub/use-code-hub.hook.type";
 
 import selectors from "../scss/File.module.scss";
 
-import useCodeHub from "@/hooks/use-code-hub/use-code-hub.hook";
+import useCodeHub from "@hook/use-code-hub/use-code-hub.hook";
 
 export default function File(props: TFileExplorerFileProps): JSX.Element {
 	const { selectFile } = useCodeHub();

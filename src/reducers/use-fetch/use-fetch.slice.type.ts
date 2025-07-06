@@ -1,6 +1,6 @@
-import type { TUseMutateFunction } from "@/hooks/use-fetch/use-mutate.hook.type";
-import type { TUseFetchCallback } from "@/hooks/use-fetch/use-fetch.hook.type";
-import type { TFetcherReturn } from "@/utils/fetcher/fetcher.util.type";
+import type { TUseMutateFunction } from "@hook/use-fetch/use-mutate.hook.type";
+import type { TUseFetchCallback } from "@hook/use-fetch/use-fetch.hook.type";
+import type { TFetcherReturn } from "@util/fetcher/fetcher.util.type";
 
 export type TUseFetchSliceState = {
 	globalIsLoading: boolean

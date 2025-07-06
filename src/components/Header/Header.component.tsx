@@ -1,4 +1,5 @@
 import type { JSX } from "react";
+import type { TAccount } from "@root/global.type";
 
 import selectors from "./Header.module.scss";
 
@@ -7,7 +8,11 @@ import { Fragment } from "react";
 
 import UserSection from "./component/User-Section.component";
 
+import useAuth from "@hook/use-auth/use-auth.hook";
+
 export default function Header(): JSX.Element {
+	const { account, isPending } = useAuth<TAccount>();
+
 	return(
 		<header className={selectors.header_container}>
 			<div className="fr-c-sp-xs">
@@ -18,7 +23,7 @@ export default function Header(): JSX.Element {
 					</h1>
 				</Link>
 				<section className="fr-n-n-m">
-					{false ? null : false ? <UserSection account={undefined}/> : 
+					{isPending ? null : account ? <UserSection account={account}/> : 
 					<Fragment>
 						<Link className={selectors.header_user_auth} to="/sign-in">Sign in</Link>
 						<Link className={selectors.header_user_auth} to="/sign-up">Sign up</Link>						
@@ -26,13 +31,16 @@ export default function Header(): JSX.Element {
 				</section>
 			</div>
 			<nav className={`fr-n-n-m ${selectors.header_nav_container}`}>
-				<Link to="/about">About</Link>
-				<Link to="/documentation">Documentation</Link>
-				<Link to="/support">Support</Link>
-				{false ? <Fragment>
-					<Link to={`/user/${"account._id"}/projects`}>Projects</Link>
-					<Link to="/project/create">Create Project</Link>
-				</Fragment> : null}
+				{isPending ? null :
+				<Fragment>
+					<Link to="/about">About</Link>
+					<Link to="/documentation">Documentation</Link>
+					<Link to="/support">Support</Link>
+					{account ? <Fragment>
+						<Link to={`/user/${account._id}/projects`}>Projects</Link>
+						<Link to="/project/create">Create Project</Link>
+					</Fragment> : null}
+				</Fragment>}
 			</nav>
 		</header>
 	);

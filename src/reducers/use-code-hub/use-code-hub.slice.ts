@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { TUseCodeHubState, TFileExplorerFile } from "@/hooks/use-code-hub/use-code-hub.hook.type";
+import type { TUseCodeHubState, TFileExplorerFile } from "@hook/use-code-hub/use-code-hub.hook.type";
 
 const initUseCodeHubState: TUseCodeHubState = {
 	selectedFile: undefined

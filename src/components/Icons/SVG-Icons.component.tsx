@@ -3,7 +3,8 @@ import type { TSVGIconProps } from "./Icons.component.type";
 
 export function IconBookCopy(props: TSVGIconProps): JSX.Element {
 	return(
-		<svg 
+		<svg
+			strokeWidth="1"
 			fill="none" 
 			stroke="currentColor" 
 			viewBox="0 0 24 24"
@@ -16,7 +17,8 @@ export function IconBookCopy(props: TSVGIconProps): JSX.Element {
 
 export function IconBraces(props: TSVGIconProps): JSX.Element {
 	return(
-		<svg 
+		<svg
+			strokeWidth="1"
 			fill="none" 
 			stroke="currentColor" 
 			viewBox="0 0 24 24"
@@ -28,7 +30,8 @@ export function IconBraces(props: TSVGIconProps): JSX.Element {
 
 export function IconLightBulb(props: TSVGIconProps): JSX.Element {
 	return(
-		<svg 
+		<svg
+			strokeWidth="1"
 			fill="none" 
 			stroke="currentColor" 
 			viewBox="0 0 24 24"
@@ -40,7 +43,8 @@ export function IconLightBulb(props: TSVGIconProps): JSX.Element {
 
 export function IconRocket(props: TSVGIconProps): JSX.Element {
 	return(
-		<svg 
+		<svg
+			strokeWidth="1"
 			fill="none" 
 			stroke="currentColor" 
 			viewBox="0 0 24 24"
@@ -53,11 +57,11 @@ export function IconRocket(props: TSVGIconProps): JSX.Element {
 
 export function IconCircleX(props: TSVGIconProps): JSX.Element {
 	return(
-		<svg 
+		<svg
+			strokeWidth="1"
 			viewBox="0 0 24 24" 
 			fill="none" 
 			stroke="currentColor" 
-			strokeWidth="2" 
 			strokeLinecap="round" 
 			strokeLinejoin="round"
 			{...props }>
@@ -69,7 +73,8 @@ export function IconCircleX(props: TSVGIconProps): JSX.Element {
 
 export function IconImage(props: TSVGIconProps): JSX.Element {
 	return(
-		<svg 
+		<svg
+			strokeWidth="1"
 			fill="none" 
 			stroke="currentColor" 
 			strokeLinecap="round" 
@@ -85,9 +90,8 @@ export function IconImage(props: TSVGIconProps): JSX.Element {
 
 export function IconPlus(props: TSVGIconProps): JSX.Element {
 	return(
-		<svg 
-			width={20} 
-			height={20} 
+		<svg
+			strokeWidth="1"
 			fill="none" 
 			stroke="currentColor" 
 			strokeLinecap="round" 
@@ -95,6 +99,52 @@ export function IconPlus(props: TSVGIconProps): JSX.Element {
 			viewBox="0 0 24 24"
 			{...props }>
 				<path d="M5 12h14M12 5v14"/>
+		</svg>
+	);
+};
+
+export function IconUserCircle(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg
+			strokeWidth="1"
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round"
+			viewBox="0 0 24 24"
+			{...props }>
+				<path d="M18 20a6 6 0 0 0-12 0"/>
+				<circle cx="12" cy="10" r="4"/>
+				<circle cx="12" cy="12" r="10"/>
+		</svg>
+	);
+};
+
+export function IconEye(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round" 
+			viewBox="0 0 24 24"
+			{...props }>
+				<path d="M2 12a1 1 0 0 1 0 0 11 11 0 0 1 20 0 1 1 0 0 1 0 0 11 11 0 0 1-20 0"/>
+				<circle cx="12" cy="12" r="3"/>
+		</svg>
+	);
+};
+
+export function IconEyeOff(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round" 
+			viewBox="0 0 24 24"
+			{...props }>
+				<path d="m15 18-1-3M2 8a11 11 0 0 0 20 0M20 15l-2-2M4 15l2-2M9 18l1-3"/>
 		</svg>
 	);
 };

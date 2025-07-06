@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 
-import Button from "@/components/Button/Button.component";
+import Button from "@component/Button/Button.component";
 import CodeEditor from "./components/Code-Editor.component";
 import FileExplorer from "./components/File-Explorer.component";
 

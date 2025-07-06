@@ -12,17 +12,17 @@ export default function Footer(): JSX.Element {
 				  <Link className={selectors.footer_websitename} to="/">Code Hub</Link>
          	<ul className="fr-n-n-xs">
 						<li>
-						  <Link className={selectors.footer_media_icon} to="/">
+						  <Link className={selectors.footer_media_icon} to="/" aria-label="Link to the our Twitter Account">
 						    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="m22 4-2 3c2 10-9 18-18 12l6-2c-5-1-7-7-5-12 2 3 6 4 9 4-1-4 4-7 7-4l3-1z"/></svg>
 						  </Link>
 						</li>
 						<li>
-						  <Link className={selectors.footer_media_icon} to="/">
+						  <Link className={selectors.footer_media_icon} to="/" aria-label="Link to the our Twitter Account">
 						    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="m22 4-2 3c2 10-9 18-18 12l6-2c-5-1-7-7-5-12 2 3 6 4 9 4-1-4 4-7 7-4l3-1z"/></svg>
 						  </Link>
 						</li>
 						<li>
-  						<Link className={selectors.footer_media_icon} to="/">
+  						<Link className={selectors.footer_media_icon} to="/" aria-label="Link to the our Twitter Account">
 	  					  <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="m22 4-2 3c2 10-9 18-18 12l6-2c-5-1-7-7-5-12 2 3 6 4 9 4-1-4 4-7 7-4l3-1z"/></svg>
 		  			  </Link>
 						</li>

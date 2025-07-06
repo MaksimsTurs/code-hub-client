@@ -1,5 +1,5 @@
 import type { PropsWithChildren, JSX } from "react";
-import type { TUseFetchCallback } from "@/hooks/use-fetch/use-fetch.hook.type";
+import type { TUseFetchCallback } from "@hook/use-fetch/use-fetch.hook.type";
 
 export type TLayoutProps = PropsWithChildren<{
 	deps?: string[]

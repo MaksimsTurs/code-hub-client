@@ -5,14 +5,14 @@ import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import Form from "@/components/Form/Form.component";
-import InputFile from "@/components/Inputs/Input-File/Input-File.component";
-import InputText from "@/components/Inputs/Input-Text/Input-Text.component";
-import Button from "@/components/Button/Button.component";
+import Form from "@component/Form/Form.component";
+import InputFile from "@component/Inputs/Input-File/Input-File.component";
+import InputText from "@component/Inputs/Input-Text/Input-Text.component";
+import Button from "@component/Button/Button.component";
 
-import std from "@/utils/std/std.util";
+import std from "@util/std/std.util";
 
-import useAuth from "@/hooks/use-auth/use-auth.hook";
+import useAuth from "@hook/use-auth/use-auth.hook";
 
 export default function Page(): JSX.Element {
 	const navigate = useNavigate();

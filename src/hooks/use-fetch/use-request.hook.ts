@@ -1,5 +1,5 @@
-import type { TStoreDispatch, TStoreRootState } from "@/reducers/reducer.store";
-import type { TUseFetchCacheState, TUseFetchSliceState, TUseFetchErrorResponse } from "@/reducers/use-fetch/use-fetch.slice.type";
+import type { TStoreDispatch, TStoreRootState } from "@reducer/reducer.store";
+import type { TUseFetchCacheState, TUseFetchSliceState, TUseFetchErrorResponse } from "@reducer/use-fetch/use-fetch.slice.type";
 import type { TUseRequestOptions, TUseRequestReturn } from "./use-request.hook.type";
 import type { TUseFetchCallback } from "./use-fetch.hook.type";
 import type { RefObject } from "react";
@@ -10,9 +10,9 @@ import { useEffect, useState, useRef } from "react";
 
 import collectStateData from "./utils/collect-state-data.util";
 
-import request from "@/reducers/use-fetch/action/request.action";
+import request from "@reducer/use-fetch/action/request.action";
 
-import assert from "@/utils/assert/assert.util";
+import assert from "@util/assert/assert.util";
 
 export default function useRequest<R = any>(deps: string | null, func: TUseFetchCallback<R>, options?: TUseRequestOptions): TUseRequestReturn<R> {
 	assert(Error, "\"noCaching\" was not passed but the \"deps\" not!", Boolean(options?.noCaching && !deps));

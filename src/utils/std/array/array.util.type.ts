@@ -1,4 +1,4 @@
-import type { TJSPrimitiveTypes } from "@/global.type";
+import type { TJSPrimitiveTypes } from "@root/global.type";
 
 export type TArray = {
 	countDuplicatesOfPrimitives: (array: TJSPrimitiveTypes[], keysToCount: Set<TJSPrimitiveTypes>) => Record<string, number>

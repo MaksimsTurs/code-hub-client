@@ -14,6 +14,13 @@ export default createAsyncThunk<TUseFetchActionsReturn<TUseRequestAllActionRetur
 		// @ts-ignore
 		const data: TUseRequestAllActionReturnData = await Promise.allSettled(params.promises);
 
+		for(let index: number = 0; index < data.length; index++) {
+			// @ts-ignore
+			const response = data[index].value;
+			// @ts-ignore
+			data[index].value = { data: response.data, error: response.error };
+		}
+
 		return { newKeys: params.newKeys, prevKeys: params.prevKeys, data };
 	}
 );

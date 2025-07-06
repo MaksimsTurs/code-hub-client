@@ -1,5 +1,5 @@
-@use "@/scss/variabel" as *;
-@use "@/scss/mixin" as *;
+@use "@scss/variabel" as *;
+@use "@scss/mixin" as *;
 
 .text_input_container_with_error {
 	input[type="text"],
@@ -16,6 +16,8 @@
 }
 
 .text_input_container {
+	position: relative;
+
 	input[type="text"],
 	input[type="number"],
 	input[type="email"],
@@ -30,6 +32,16 @@
 	
 		&::placeholder {
 			color: white;
+		}
+	}
+
+	.text_input_body {
+		position: relative;
+
+		.text_input_password_exposer {
+			@include abs-top-right(50%, 1%, 1, fit-content, fit-content);
+			cursor: pointer;
+			transform: $var-translate-center-center;
 		}
 	}
 }

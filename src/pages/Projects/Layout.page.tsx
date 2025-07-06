@@ -1,11 +1,13 @@
 import type { LazyExoticComponent, JSX } from "react";
-import type { TCodeHubProject } from "@/reducers/use-code-hub/use-code-hub.slice.type.ts";
-import type { TUseRequestAllCallbackReturn } from "@/hooks/use-fetch/use-request-all.hook.type";
+import type { TCodeHubProject } from "@reducer/use-code-hub/use-code-hub.slice.type.ts";
+import type { TUseRequestAllCallbackReturn } from "@hook/use-fetch/use-request-all.hook.type";
 
-import Layout from "@/components/Layout/Layout.component";
-import Metadata from "@/components/Metadata/Metadata.component";
+import Layout from "@component/Layout/Layout.component";
+import Metadata from "@component/Metadata/Metadata.component";
 
-import useAuth from "@/hooks/use-auth/use-auth.hook";
+import useAuth from "@hook/use-auth/use-auth.hook.ts";
+
+import fetcher from "@util/fetcher/fetcher.util.ts";
 
 import { lazy } from "react";
 
@@ -16,11 +18,13 @@ function metadata() {
 };
 
 export default function PageLayout(): JSX.Element {
-	const { withAuth } = useAuth();
+	const { authorization } = useAuth();
 
+	authorization("user/authorization");
+		
 	const getAllProjects = async (): TUseRequestAllCallbackReturn<TCodeHubProject[]> => {
-		return (await withAuth("get", "project/all") || []) as unknown as TUseRequestAllCallbackReturn<TCodeHubProject[]>;
-	}
+		return await fetcher.get<TCodeHubProject[]>("project/all", undefined, { credentials: "include" });
+	};
 
 	return(
 		<Layout loader={<p>Loading</p>} metadata={metadata} deps={["project/all"]} fetches={[getAllProjects]}>

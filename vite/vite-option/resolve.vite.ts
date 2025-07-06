@@ -1,8 +1,5 @@
-import type { UserConfig } from "vite";
+import type { UserConfig, AliasOptions } from "vite";
 
-export default function(path: string): UserConfig["resolve"] {
-  return {
-    extensions: [".ts", ".tsx"],
-    alias: { "@": path },
-  };
+export default function(alias: AliasOptions): UserConfig["resolve"] {
+  return { extensions: [".ts", ".tsx"], alias };
 };

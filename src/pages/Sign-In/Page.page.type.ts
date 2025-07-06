@@ -3,3 +3,9 @@ export type TSignInData = {
 	email: string
 	password: string
 };
+
+export type TSignInServerError = {
+	code: number,
+	message: string
+	messages: Partial<Record<keyof TSignInData, string>>
+};

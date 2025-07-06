@@ -1,4 +1,4 @@
-import type { TFileExplorerItem } from "@/hooks/use-code-hub/use-code-hub.hook.type";
+import type { TFileExplorerItem } from "@hook/use-code-hub/use-code-hub.hook.type";
 
 export type TFileExplorer = {
 	items: TFileExplorerItem[]

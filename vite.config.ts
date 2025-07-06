@@ -40,7 +40,15 @@ export default viteConfig(({ mode }) => {
 	];
 
 	return {
-		resolve: resolveOption(resolve("src")),
+		resolve: resolveOption({
+			"@root":      resolve("src"),
+			"@component": resolve("src/components"),
+			"@hook":      resolve("src/hooks"),
+			"@page":      resolve("src/pages"),
+			"@reducer":   resolve("src/reducers"),
+			"@scss":      resolve("src/scss"),
+			"@util":      resolve("src/utils")
+		}),
 		css: cssOption(),
 		server: serverOption({ open: false, path: resolve("src/**/*.*") }),
 		build: buildOption({ isDev, outDir: resolve("output"), input: resolve("src/index.html") }),

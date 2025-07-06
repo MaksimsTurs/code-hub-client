@@ -1,5 +1,5 @@
-import type { TStoreDispatch, TStoreRootState } from "@/reducers/reducer.store";
-import type { TUseFetchSliceState } from "@/reducers/use-fetch/use-fetch.slice.type";
+import type { TStoreDispatch, TStoreRootState } from "@reducer/reducer.store";
+import type { TUseFetchSliceState } from "@reducer/use-fetch/use-fetch.slice.type";
 import type { TUseRequestAllOptions, TUseRequestAllReturn } from "./use-request-all.hook.type";
 import type { TUseFetchCallback } from "./use-fetch.hook.type";
 import type { RefObject } from "react";
@@ -12,9 +12,9 @@ import collectPromises from "./utils/collect-promises.util";
 import createDataFromUsedKeys from "./utils/create-data-from-used-keys.util";
 import { isUndefinedOrNull } from "./utils/is.util";
 
-import assert from "@/utils/assert/assert.util";
+import assert from "@util/assert/assert.util";
 
-import requestAll from "@/reducers/use-fetch/action/request-all.action";
+import requestAll from "@reducer/use-fetch/action/request-all.action";
 
 export default function useRequestAll(deps: string[], fetches: TUseFetchCallback[], options?: TUseRequestAllOptions): TUseRequestAllReturn {
 	const dispatch = useDispatch<TStoreDispatch>();

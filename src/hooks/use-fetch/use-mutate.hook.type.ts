@@ -1,4 +1,4 @@
-import type { TUseFetchCacheState } from "@/reducers/use-fetch/use-fetch.slice.type";
+import type { TUseFetchCacheState } from "@reducer/use-fetch/use-fetch.slice.type";
 
 export type TUseMutateReturn<T> = {
 	mutate: <B = any>(body: B) => void

@@ -1,19 +1,24 @@
 import type { JSX } from "react";
-import type { TCodeHubProject } from "@/reducers/use-code-hub/use-code-hub.slice.type";
+import type { TCodeHubProject } from "@reducer/use-code-hub/use-code-hub.slice.type";
+import type { TAccount } from "@root/global.type";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Project from "./components/Project.component";
-import Button from "@/components/Button/Button.component";
-import { IconPlus } from "@/components/Icons/SVG-Icons.component";
+import Button from "@component/Button/Button.component";
+import { IconPlus } from "@component/Icons/SVG-Icons.component";
 
 import selectors from "./Page.module.scss";
 
-import useFetch from "@/hooks/use-fetch/use-fetch.hook";
+import useFetch from "@hook/use-fetch/use-fetch.hook";
+import useAuth from "@hook/use-auth/use-auth.hook";
 
 export default function Page(): JSX.Element {
+	const params = useParams<{ userId: string }>();
 	const navigate = useNavigate();
 	const { getNamedState } = useFetch();
+	const { account } = useAuth<TAccount>();
+	
 	const projects = getNamedState<TCodeHubProject[]>("project/all");
 
 	const goToCreateProject = (): void => {
@@ -22,11 +27,12 @@ export default function Page(): JSX.Element {
 
 	return(
 		<div className="fc-n-n-xs">
+			{(account && account._id === params.userId) &&
 			<div className="fr-n-fe-n">
 				<Button onClick={goToCreateProject}>
-					<IconPlus/>
+					<IconPlus width={24} height={24}/>
 				</Button>
-			</div>
+			</div>}
 			<ul className={`fc-n-n-m ${selectors.projects_list}`}>
 				{projects?.data && projects.data.map(item => <Project key={item._id} project={item}/>)}
 			</ul>

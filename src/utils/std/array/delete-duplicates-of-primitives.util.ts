@@ -1,4 +1,4 @@
-import type { TJSPrimitiveTypes } from "@/global.type";
+import type { TJSPrimitiveTypes } from "@root/global.type";
 
 export default function deleteDuplicatesOfPrimitives(array: TJSPrimitiveTypes[], keysToRemove: Set<TJSPrimitiveTypes>): TJSPrimitiveTypes[] {
 	let cleanArray: TJSPrimitiveTypes[] = [];

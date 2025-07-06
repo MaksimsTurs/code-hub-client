@@ -1,28 +1,25 @@
-import type { TFetcherReturn } from "@/utils/fetcher/fetcher.util.type";
+import type { THeaders } from "@util/fetcher/fetcher.util.type";
 
-export type TUseAuthReturn = {
+import fetcher from "@util/fetcher/fetcher.util";
+
+export type TUseAuthReturn<A, E = unknown> = {
 	isPending: boolean
+	error?: E
+	account?: A
 	authentication: TUseAuthAuthentication
+	authorization: TUseAuthAuthorization
 	withAuth: TUseAuthWithAuth
-} & TUseAuthLocalState;
+};
 
-export type TUseAuthHTTPMethods = "post" | "get";
-
-export type TUseAuthWithAuth = <R>(method: TUseAuthHTTPMethods, url: string, body?: any) => Promise<TFetcherReturn<R | undefined, undefined>>;
-
-export type TUseAuthAuthentication = (url: string, body: FormData) => void;
-
-export type TUseAuthLocalState = {
+export type TUseAuthLocalState<E> = {
+	error?: E
 	isPending: boolean
-	error?: unknown
 };
 
-export type TUseAuthAuthorizeParam = {
-	url: string
-	accesToken?: string
-};
+export type TUseAuthAuthorization = (url: string) => void;
 
-export type TUseAuthAuthenticateParam = {
-	url: string
-	body: FormData
-};
+export type TUseAuthAuthentication = (url: string, body: any) => Promise<boolean>;
+
+export type TUseAuthFetcherMethods = Omit<keyof typeof fetcher, "base">;
+
+export type TUseAuthWithAuth = <R>(method: TUseAuthFetcherMethods, url: string, body?: any, headers?: THeaders) => Promise<R>;

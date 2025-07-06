@@ -1,5 +1,5 @@
-import type { TUseFetchCacheState } from "@/reducers/use-fetch/use-fetch.slice.type";
-import type { TFetcherReturn } from "@/utils/fetcher/fetcher.util.type";
+import type { TUseFetchCacheState } from "@reducer/use-fetch/use-fetch.slice.type";
+import type { TFetcherReturn } from "@util/fetcher/fetcher.util.type";
 
 export type TUseFetchReturn = {
 	getNamedState: <R = unknown>(name: string) => TUseFetchCacheState<R> | undefined

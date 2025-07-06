@@ -1,7 +1,7 @@
 import type { LazyExoticComponent, JSX } from "react";
 
-import Layout from "@/components/Layout/Layout.component";
-import Metadata from "@/components/Metadata/Metadata.component";
+import Layout from "@component/Layout/Layout.component";
+import Metadata from "@component/Metadata/Metadata.component";
 
 import { lazy } from "react";
 

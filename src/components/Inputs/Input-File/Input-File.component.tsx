@@ -4,7 +4,7 @@ import type { TExtendFieldValues } from "../Inputs.component.type";
 
 import { useState, Fragment } from "react";
 
-import { IconImage } from "@/components/Icons/SVG-Icons.component";
+import { IconImage } from "@component/Icons/SVG-Icons.component";
 
 import selectors from "./Input-File.module.scss";
 

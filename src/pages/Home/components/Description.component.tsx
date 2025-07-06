@@ -3,7 +3,7 @@ import type { JSX } from "react";
 import selectors from "../scss/Description.module.scss";
 
 import DescriptionCard from "./Description-Card.component";
-import { IconBookCopy, IconBraces, IconLightBulb, IconRocket } from "@/components/Icons/SVG-Icons.component";
+import { IconBookCopy, IconBraces, IconLightBulb, IconRocket } from "@component/Icons/SVG-Icons.component";
 
 export default function Description(): JSX.Element {
 	return(

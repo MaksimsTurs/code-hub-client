@@ -1,4 +1,4 @@
-import type { TJSPrimitiveTypes } from "@/global.type";
+import type { TJSPrimitiveTypes } from "@root/global.type";
 
 export default function countDuplicatesOfPrimitives(array: TJSPrimitiveTypes[], keysToCount: Set<TJSPrimitiveTypes>): Record<string, number> {
 	const count: Record<string, number> = {};

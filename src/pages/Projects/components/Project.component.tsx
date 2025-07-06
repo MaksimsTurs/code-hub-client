@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import selectors from "../scss/Project.module.scss";
 
-import std from "@/utils/std/std.util";
+import std from "@util/std/std.util";
 
 export default function Project(props: TProjectProps): JSX.Element {
 	return(
@@ -16,7 +16,7 @@ export default function Project(props: TProjectProps): JSX.Element {
 					<p className={selectors.project_visibility_type}>{std.string.firstLetterToUpperCase(props.project.visibility)}</p>
 				</div>
 				<div>
-					<p className={selectors.project_description}>{props.project.description}</p>
+					<p className={selectors.project_description}>{props.project.description || "[NO DESCRIPTION]"}</p>
 				</div>
 			</Link>
 		</li>

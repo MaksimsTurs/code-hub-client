@@ -1,4 +1,4 @@
-import type { TUseFetchCacheMap, TUseFetchCacheState } from "@/reducers/use-fetch/use-fetch.slice.type";
+import type { TUseFetchCacheMap, TUseFetchCacheState } from "@reducer/use-fetch/use-fetch.slice.type";
 
 import getStateFromCache from "./get-state-from-cache.util";
 

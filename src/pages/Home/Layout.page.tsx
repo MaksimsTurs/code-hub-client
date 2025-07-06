@@ -1,7 +1,9 @@
 import type { LazyExoticComponent, JSX } from "react";
 
-import Layout from "@/components/Layout/Layout.component";
-import Metadata from "@/components/Metadata/Metadata.component";
+import Layout from "@component/Layout/Layout.component";
+import Metadata from "@component/Metadata/Metadata.component";
+
+import useAuth from "@hook/use-auth/use-auth.hook.ts";
 
 import { lazy } from "react";
 
@@ -12,6 +14,10 @@ function metadata(): JSX.Element {
 };
 
 export default function PageLayout(): JSX.Element {
+	const { authorization } = useAuth();
+
+	authorization("user/authorization");
+
 	return(
 		<Layout loader={<p>Loading</p>} metadata={metadata}>
 		  <Page/>

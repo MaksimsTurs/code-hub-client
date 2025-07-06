@@ -1,12 +1,12 @@
-import type { TUseFetchSliceState } from "@/reducers/use-fetch/use-fetch.slice.type";
-import type { TStoreDispatch, TStoreRootState } from "@/reducers/reducer.store";
+import type { TUseFetchSliceState } from "@reducer/use-fetch/use-fetch.slice.type";
+import type { TStoreDispatch, TStoreRootState } from "@reducer/reducer.store";
 import type { TUseMutateReturn, TUseMutateFunction } from "./use-mutate.hook.type";
 import type { RefObject } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useRef } from "react";
 
-import mutate from "@/reducers/use-fetch/action/mutate.action";
+import mutate from "@reducer/use-fetch/action/mutate.action";
 
 import getStateFromCache from "./utils/get-state-from-cache.util";
 

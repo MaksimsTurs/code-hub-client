@@ -2,13 +2,13 @@ import type { JSX, SyntheticEvent } from "react";
 
 import selectors from "../scss/Code-Editor.module.scss"
 
-import useCodeHub from "@/hooks/use-code-hub/use-code-hub.hook";
+import useCodeHub from "@hook/use-code-hub/use-code-hub.hook";
 
 import { useState } from "react";
 
-import Tokenizer from "@/utils/Languages-Parser/Tokenizer.util";
-import Token from "@/utils/Languages-Parser/Token.util";
-import { ETokenTypes } from "@/utils/Languages-Parser/Tokenizer.util.type";
+import Tokenizer from "@util/Languages-Parser/Tokenizer.util";
+import Token from "@util/Languages-Parser/Token.util";
+import { ETokenTypes } from "@util/Languages-Parser/Tokenizer.util.type";
 
 export default function CodeEditor(): JSX.Element {
 	const { selectedFile } = useCodeHub();
