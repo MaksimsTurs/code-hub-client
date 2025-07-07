@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import Form from "@component/Form/Form.component";
 import FormSection from "@component/Form/Form-Sector.component";
 import InputText from "@component/Inputs/Input-Text/Input-Text.component";
-import InputRadio from "@component/Inputs/Input-Radio/Input-Radio.component";
+import InputRadio, { InputRadioContainer } from "@component/Inputs/Input-Radio/Input-Radio.component";
 import Button from "@component/Button/Button.component";
 import ErrorBox from "@component/Errors/Error-Box/Error-Box.component";
 
@@ -17,7 +17,8 @@ import useAuth from "@hook/use-auth/use-auth.hook";
 
 export default function Page(): JSX.Element {
 	const { withAuth, error } = useAuth<unknown, TCreateProjectServerError>();
-	const { register, reset, handleSubmit, formState: { errors }} = useForm<TCodeHubProject>({ defaultValues: { visibility: "public" }});
+	// { defaultValues: { visibility: "public" }}
+	const { register, reset, handleSubmit, formState: { errors }} = useForm<TCodeHubProject>();
 	const { mutate } = useMutate<TCodeHubProject[], TCodeHubProject, TCodeHubProject[]>("project/all", async function(body, currState) {
 		const newProject = await withAuth<TCodeHubProject>("post", "project/create", body);
 					
@@ -57,24 +58,32 @@ export default function Page(): JSX.Element {
 						validation={{	maxLength: { message:"Description is to long!", value: 250 }}}/>
 				</FormSection>
 				<FormSection title="Privacity">
-					<InputRadio<TCodeHubProject>
-						register={register}
-						name="visibility"
-						label="Public"
-						value="public"
-						description="Project can be seed by any one."/>
-					<InputRadio<TCodeHubProject>
-						register={register}
-						name="visibility"
-						label="Private"
-						value="private"
-						description="Project can be seed only by you."/>
-					<InputRadio<TCodeHubProject>
-						register={register}
-						name="visibility"
-						label="Protected"
-						value="protected"
-						description="Project can be seed only by you and your team."/>
+					<InputRadioContainer error={errors.visibility?.message}>
+						<InputRadio<TCodeHubProject>
+							register={register}
+							name="visibility"
+							label="Public"
+							value="public"
+							error={errors.visibility?.message}
+							description="Project can be seed by any one."
+							validation={{ required: { message: "Visibility is required!", value: true }}}/>
+						<InputRadio<TCodeHubProject>
+							register={register}
+							name="visibility"
+							label="Private"
+							value="private"
+							error={errors.visibility?.message}
+							description="Project can be seed only by you."
+							validation={{ required: { message: "Visibility is required!", value: true }}}/>
+						<InputRadio<TCodeHubProject>
+							register={register}
+							name="visibility"
+							label="Protected"
+							value="protected"
+							error={errors.visibility?.message}
+							description="Project can be seed only by you and your team."
+							validation={{ required: { message: "Visibility is required!", value: true }}}/>
+					</InputRadioContainer>
 				</FormSection>
 				{error && error.code != 422 && <ErrorBox message={error.message}/>}
 				<Button type="submit">Create Project</Button>

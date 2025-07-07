@@ -3,18 +3,13 @@
 
 .radio_input_container {
 	color: $var-color-hell-red;
-	height: fit-content;
 	transition: background-color $var-transition-time-xs;
+	height: fit-content;
 	cursor: pointer;
 
 	&:has(div > input:checked) .radio_input_checkmark::after{
 		transform: $var-translate-center-center scale(1);
 		transition: transform $var-transition-time-xs;
-	}
-
-	.radio_input_description {
-		color: $var-color-white-hight-transition;
-		font-size: $var-font-m;
 	}
 
 	.radio_input_checkmark {
@@ -33,8 +28,26 @@
 			border-radius: 50%;
 		}
 	}
+
+	.radio_input_description {
+		color: $var-color-white-hight-transition;
+		font-size: $var-font-m;
+	}
 }
 
+.radio_input_container_with_error {
+	border: 1px solid $var-color-hell-red !important;
+
+	.radio_input_checkmark {
+		border: 1px solid $var-color-hell-red !important;
+	}
+
+	& > div > p {
+		color: $var-color-hell-red;
+	}
+}
+
+// Used when when description is passed.
 .radio_input_container_bordered {
 	border: $var-border-white-hight-transparent;
 	padding: $var-padding-l;

@@ -22,7 +22,7 @@ import SignIn from "@page/Sign-In/Layout.page";
 import fetcher from "./utils/fetcher/fetcher.util";
 
 function App(): JSX.Element {
-	fetcher.base = import.meta.env.DEV ? "http://localhost:4000/" : "https://";
+	fetcher.base = import.meta.env.DEV ? "http://localhost:4000/" : "https://code-hub-server.vercel.app/";
 
 	return(
 		<main>

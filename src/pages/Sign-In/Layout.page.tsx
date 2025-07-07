@@ -1,20 +1,25 @@
 import type { LazyExoticComponent, JSX } from "react";
 
 import Layout from "@component/Layout/Layout.component";
-import Metadata from "@component/Metadata/Metadata.component";
 
-import { lazy } from "react";
+import { Fragment, lazy } from "react";
 
-const SignIn: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
+const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
 
-function metadata() {
-	return <Metadata title="Home" meta={[]}/>;
+function Metadata(): JSX.Element {
+	return(
+		<Fragment>
+			<title>Sign In</title>
+			<meta name="description" content="Here you can log in in your account."/>
+			<meta name="robots" content="index,follow"></meta>
+		</Fragment>
+	);
 };
 
-export default function SignInLayout(): JSX.Element {
+export default function PageLayout(): JSX.Element {
 	return(
-		<Layout loader={<p>Loading</p>} metadata={metadata}>
-		  <SignIn/>
+		<Layout loader={<p>Loading</p>} metadata={Metadata}>
+		  <Page/>
 		</Layout>
 	);
 };

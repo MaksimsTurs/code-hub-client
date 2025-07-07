@@ -2,6 +2,7 @@
 @use "@scss/mixin" as *;
 
 .file_input_container {
+	position: relative;
 	cursor: pointer;
 	border: $var-border-white-hight-transparent;
 	padding: $var-padding-l;

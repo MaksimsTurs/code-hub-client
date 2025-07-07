@@ -1,6 +1,7 @@
 import type { TUseAuthFetcherMethods } from "@hook/use-auth/use-auth.hook.type";
 
 export type TUseAuthSliceState = {
+	isPending: boolean
 	accessToken?: string
 	account?: unknown
 };

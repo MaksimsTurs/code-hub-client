@@ -2,7 +2,8 @@ import type { JSX } from "react";
 import type { TInputTextProps } from "./Input-Text.component.type";
 import type { TExtendFieldValues } from "../Inputs.component.type";
 
-import { IconCircleX, IconEye, IconEyeOff } from "@component/Icons/SVG-Icons.component";
+import { IconEye, IconEyeOff } from "@component/Icons/SVG-Icons.component";
+import ErrorInputValidation from "@root/components/Errors/Error-Input-Validation/Error-Input-Validation.component";
 
 import { useState, Fragment } from "react";
 
@@ -28,11 +29,7 @@ export default function TextInput<T>({ error, validation, register, type, ...oth
 					<IconEyeOff className={selectors.text_input_password_exposer} width={20} height={20} onClick={exposePassword}/>}
 				</Fragment> : null}
 			</div>
-			{error && 
-				<div className={`fr-c-n-xs ${selectors.text_input_error_container}`}>
-					<IconCircleX/>
-					<p>{error}</p>
-				</div>}
+			{error && <ErrorInputValidation message={error}/>}
 		</label>
 	);
 };

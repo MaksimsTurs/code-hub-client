@@ -2,27 +2,34 @@ import type { JSX } from "react";
 import type { LazyExoticComponent } from "react";
 
 import Layout from "@component/Layout/Layout.component";
-import Metadata from "@component/Metadata/Metadata.component";
-import ProtectRoute from "@component/Protect-Route/Protect-Route.component.tsx";
+import ProtectRoute from "@hook/use-auth/Protect-Route.component.tsx";
 
 import useAuth from "@hook/use-auth/use-auth.hook.ts";
 
-import { lazy } from "react";
+import { lazy, Fragment } from "react";
 
-const CreateProject: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
+const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
 
-function metadata(): JSX.Element {
-	return <Metadata title="Home" meta={[]}/>;
+function Metadata(): JSX.Element {
+	return(
+		<Fragment>
+			<title>Create Project</title>
+			<meta name="description" content="Here you can create a new Project."/>
+			<meta name="robots" content="index,follow"></meta>
+		</Fragment>
+	);
 };
 
-export default function CreateProjectLayout(): JSX.Element {
-	const { account } = useAuth();
+export default function PageLayout(): JSX.Element {
+	const { account, authorization } = useAuth();
+
+	authorization("user/authorization");
 
 	return(
-		<Layout loader={<p>Loading</p>} metadata={metadata}>
-			<ProtectRoute redirectUrl="/" and={[account]}>
-		  	<CreateProject/>
-			</ProtectRoute>
-		</Layout>
+		<ProtectRoute redirectUrl="/" or={[account]}>
+			<Layout loader={<p>Loading</p>} metadata={Metadata}>
+		  	<Page/>
+			</Layout>
+		</ProtectRoute>
 	);
 };

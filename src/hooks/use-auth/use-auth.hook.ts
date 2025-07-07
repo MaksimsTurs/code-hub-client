@@ -11,46 +11,38 @@ import authentication from "@reducer/use-auth/actions/authentication.action";
 
 export default function useAuth<A = any, E = Error>(): TUseAuthReturn<A, E> {
 	const dispatch = useDispatch<TStoreDispatch>();
-	const [localState, setLocalState] = useState<TUseAuthLocalState<E>>({ isPending: false });
+	const [localState, setLocalState] = useState<TUseAuthLocalState<E>>();
 	const { accessToken, ...reduxState } = useSelector<TStoreRootState, TUseAuthSliceState>(state => state.useAuth);
 
 	return {
-		isPending: localState.isPending,
-		error: localState.error as E,
+		isPending: reduxState.isPending,
+		error: localState?.error as E | undefined,
 		account: reduxState.account as A,
 		withAuth: async function<R>(method: TUseAuthFetcherMethods, url: string, body?: any): Promise<R> {
 			try {
-				setLocalState({ isPending: true });
 				const data: R = (await dispatch(withAuth({ method, url, body, accessToken })).unwrap()).data as R;
-				setLocalState({ isPending: false });
-
 				return data;
 			} catch(error) {
-				setLocalState({ isPending: false, error: error as E });
-
+				setLocalState({ error: error as E })
 				throw error;
 			}
 		},
 		authorization: function(url: string): void {
 			useEffect(() => {
-				async function auth() {
-					setLocalState({ isPending: true });
-					await dispatch(authorization(url));
-					setLocalState({ isPending: false });
+				try {
+					dispatch(authorization(url)).unwrap();
+				} catch(error) {
+					setLocalState({ error: error as E });
 				}
-
-				auth();
 			}, []);
 		},
 		authentication: async function(url: string, body: any): Promise<boolean> {
 			try {
-				setLocalState({ isPending: true });
 				await dispatch(authentication({ url, body })).unwrap();
-				setLocalState({ isPending: false });
 
 				return true;
 			} catch(error) {
-				setLocalState({ isPending: false, error: error as E });
+				setLocalState({ error: error as E });
 
 				return false;
 			}

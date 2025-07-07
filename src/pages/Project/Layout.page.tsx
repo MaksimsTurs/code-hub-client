@@ -1,20 +1,25 @@
-import type { LazyExoticComponent } from "react";
+import type { JSX, LazyExoticComponent } from "react";
 
 import Layout from "@component/Layout/Layout.component";
-import Metadata from "@component/Metadata/Metadata.component";
 
-import { lazy } from "react";
+import { lazy, Fragment } from "react";
 
-const ProjectPage: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
+const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
 
-function metadata() {
-	return <Metadata title="Home" meta={[]}/>;
+function Metadata(): JSX.Element {
+	return(
+		<Fragment>
+			<title>Project</title>
+			<meta name="description" content="Here you can see a xy Project."/>
+			<meta name="robots" content="index,follow"></meta>
+		</Fragment>
+	);
 };
 
-export default function ProjectPageLayout() {
+export default function PageLayout(): JSX.Element {
 	return(
-		<Layout loader={<p>Loading</p>} metadata={metadata}>
-		  <ProjectPage/>
+		<Layout loader={<p>Loading</p>} metadata={Metadata}>
+		  <Page/>
 		</Layout>
 	);
 };

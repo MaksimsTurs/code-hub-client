@@ -1,0 +1,17 @@
+@use "@scss/variabel" as *;
+@use "@scss/mixin" as *;
+
+.input_error_message_container {
+	background: $var-color-hell-red-hight-transparent;
+	padding: $var-padding-s $var-padding-l;
+	
+	& > p {
+		color: $var-color-hell-red;
+	}
+
+	& > svg {
+		stroke: $var-color-hell-red;
+		width: $var-size-s;
+		height: $var-size-s;
+	}
+}

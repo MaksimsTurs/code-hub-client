@@ -1,11 +1,15 @@
 import type { JSX } from "react";
-import type { TProtectRouteProps, TProtectCondition } from "./Protect-Route.component.type";
+import type { TProtectRouteProps, TProtectCondition } from "./use-auth.hook.type.ts";
 
 import { Navigate } from "react-router-dom";
 
+import useAuth from "./use-auth.hook.ts";
+
 export default function ProtectRoute(props: TProtectRouteProps): JSX.Element {
-	if((props.and && props.and.length && !and(props.and)) ||
-		 (props.or && props.or.length && !or(props.or))) {
+	const { isPending } = useAuth();
+
+	if(!isPending && ((props.and && props.and.length && !and(props.and)) ||
+		 (props.or && props.or.length && !or(props.or)))) {
 		return <Navigate to={props.redirectUrl}/>;
 	}
 
