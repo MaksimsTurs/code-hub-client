@@ -7,17 +7,6 @@
 @use "./mixin" as *;
 @use "./variabel.scss" as *;
 
-#root {
-	padding: $var-padding-xxl;
-	min-height: 100%;
-	background-image: url(../Background-2.webp);
-	object-fit: cover;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-	background-attachment: fixed;
-}
-
 .line {
 	display: flex;
 	gap: 0.1rem;

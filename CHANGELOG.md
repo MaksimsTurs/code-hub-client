@@ -1,14 +1,14 @@
-# New update v0.0.3
+# New update v0.0.4
 
 Changes:
-	- `ProtectedRoute` is jet a part of `useAuth`.
-	- `localStte` of `useAuth` does not save a loading state anymore.
-	-	Some changes in naming of scss selectors.
-	- Naming.
+	- Completely changed the website design.
 
 Added:
-	- Added component `ErrorInputValidation` for rendering input validations errors.
-	- Metadata.
+	- Side menu component.
+	- Loaders skeletons.
+	- Focus indecator for accessability.
+	- Some SVG Icons.
+	- ARIA properties.
 
 Fixed:
-	Nothing
+	- Input labels used semanticaly correct.

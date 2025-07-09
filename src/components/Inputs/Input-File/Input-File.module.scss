@@ -7,8 +7,8 @@
 	border: $var-border-white-hight-transparent;
 	padding: $var-padding-l;
 	box-shadow: $var-box-shadow-container;
-	width: calc($var-size-xxxxl * 4.5);
-	height: calc($var-size-xxxxl * 4);
+	width: calc($var-size-xxxxl * 4);
+	height: calc($var-size-xxxxl * 3);
 
 	& > svg {
 		width: $var-size-xl;

@@ -9,8 +9,9 @@ import { Provider } from "react-redux";
 import store from "@reducer/reducer.store";
 
 import ErrorBoundary from "@component/Error-Boundary/Error-Boundary.component";
-import Header from "@component/Header/Header.component";
+// import Header from "@component/Header/Header.component";
 import Footer from "@component/Footer/Footer.component";
+import SideMenu from "@component/Side-Menu/Side-Menu.component";
 
 import Home from "@page/Home/Layout.page";
 import Projects from "@page/Projects/Layout.page";
@@ -46,9 +47,11 @@ createRoot(document.getElementById("root") as HTMLElement).render(
 		<Provider store={store}>
 			<ErrorBoundary>
 				<BrowserRouter>
-					<Header/>
-					<App/>
-					<Footer/>
+					<SideMenu/>
+					<div style={{ flexGrow: 1, height: "100vh", overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+						<App/>
+						<Footer/>
+					</div>
 				</BrowserRouter>
 			</ErrorBoundary>
 		</Provider>

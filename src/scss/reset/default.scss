@@ -18,10 +18,16 @@
 	}
 }
 
-body, 
-html {
-	height: 100%;
-	width: 100%;
+body {
+	overflow: hidden;
+	background-color: #1e2d40;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	height: auto;
 }
 
 header, 
@@ -30,12 +36,9 @@ footer {
 	width: 100%;
 }
 
-main {
-	flex-grow: 1;
-}
-
 a {
 	text-decoration: none;
+	width: fit-content;
 	display: block;
 	color: white;
 	
@@ -56,11 +59,6 @@ button {
 	cursor: pointer;
 }
 
-button, input {
-	outline: none;
-	background: transparent;
-}
-
-input:focus {
+*:focus {
 	outline: none;
 }

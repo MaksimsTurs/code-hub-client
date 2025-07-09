@@ -1,0 +1,25 @@
+@use "@scss/variabel" as *;
+@use "@scss/mixin" as *;
+
+.skeleton_container {
+	flex-grow: 1;
+}
+
+.skeleton_body {
+	@include component-container(0rem);
+	height: fit-content;
+}
+
+.skeleton_box {
+	@include run-gradient-slide();
+	box-shadow: $var-box-shadow-container;
+	border-radius: $var-border-radius-l
+}
+
+.skeleton_circle {
+	@include run-gradient-slide();
+	box-shadow: $var-box-shadow-container;
+	border-radius: 50%;
+}
+
+@include anim-gradient-slide();

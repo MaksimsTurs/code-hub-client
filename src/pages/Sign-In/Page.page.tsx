@@ -3,7 +3,7 @@ import type { TSignInData, TSignInServerError } from "./Page.page.type";
 import type { SubmitHandler } from "react-hook-form";
 
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import Form from "@component/Form/Form.component";
 import FormHeader from "@component/Form/Form-Header.component";
@@ -15,6 +15,7 @@ import { IconUserCircle } from "@component/Icons/SVG-Icons.component";
 import std from "@util/std/std.util";
 
 import useAuth from "@hook/use-auth/use-auth.hook";
+import selectors from "./Page.module.scss";
 
 export default function Page(): JSX.Element {
 	const navigate = useNavigate();
@@ -31,7 +32,7 @@ export default function Page(): JSX.Element {
 	};
 	
 	return(
-		<div className="fr-n-c-n">
+		<div className={`fr-c-c-n ${selectors.signin_container}`}>
 			<Form onSubmit={handleSubmit(signIn)}>
 				<FormHeader>
 					<IconUserCircle width={36} height={36}/>
@@ -40,11 +41,15 @@ export default function Page(): JSX.Element {
 				<InputText<TSignInData>
 					register={register}
 					name="name"
+					label="Name"
 					autoComplete="name"
-					placeholder="Name"
+					placeholder="Pass you name here..."
 					type="text"
 					spellCheck={false}
 					error={error?.messages?.name || errors.name?.message}
+					aria-required
+					aria-invalid={!!(error?.messages?.name || errors.name?.message)}
+					aria-errormessage={error?.messages?.name || errors.name?.message}
 					validation={{
 						pattern:   { value: /[A-Za-z0-9_-]/, message: "Name is not correct!" },
 						maxLength: { value: 20, message: "Name is to long!" },
@@ -53,11 +58,15 @@ export default function Page(): JSX.Element {
 				<InputText<TSignInData>
 					register={register}
 					name="email"
+					label="E - mail"
 					autoComplete="email"
-					placeholder="E - Mail"
+					placeholder="Pass you e - mail here..."
 					type="email"
 					spellCheck={false}
 					error={error?.messages?.email || errors.email?.message}
+					aria-required
+					aria-invalid={!!(error?.messages?.name || errors.name?.message)}
+					aria-errormessage={error?.messages?.name || errors.name?.message}
 					validation={{
 						pattern:  { value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, message: "E - Mail is not correct!" },
 						required: { value: true, message: "E - Mail is required" }
@@ -65,15 +74,20 @@ export default function Page(): JSX.Element {
 				<InputText<TSignInData>
 					register={register}
 					name="password"
+					label="Passowrd"
 					autoComplete="current-password"
-					placeholder="Password"
+					placeholder="Pass you password here..."
 					type="password"
 					error={error?.messages?.password || errors.password?.message}
+					aria-required
+					aria-invalid={!!(error?.messages?.name || errors.name?.message)}
+					aria-errormessage={error?.messages?.name || errors.name?.message}
 					validation={{
 						minLength: { value: 12, message: "Password is to short!" },
 						required:  { value: true, message: "Passowrd is required!" }
 					}}/>
 				{(error && error.code != 422) && <ErrorBox message={error.message}/>}
+				<Link to="/forgot-password">Forgot password?</Link>
 				<Button>Submit</Button>
 			</Form>
 		</div>

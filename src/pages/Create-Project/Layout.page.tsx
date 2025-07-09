@@ -1,6 +1,7 @@
 import type { JSX } from "react";
 import type { LazyExoticComponent } from "react";
 
+import Loader from "./Laoder.component.tsx";
 import Layout from "@component/Layout/Layout.component";
 import ProtectRoute from "@hook/use-auth/Protect-Route.component.tsx";
 
@@ -27,7 +28,7 @@ export default function PageLayout(): JSX.Element {
 
 	return(
 		<ProtectRoute redirectUrl="/" or={[account]}>
-			<Layout loader={<p>Loading</p>} metadata={Metadata}>
+			<Layout loader={<Loader/>} metadata={Metadata}>
 		  	<Page/>
 			</Layout>
 		</ProtectRoute>

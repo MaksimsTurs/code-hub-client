@@ -169,3 +169,28 @@
 	border: $var-border-white-hight-transparent;
 	background-color: $var-color-black-hight-transparent;
 }
+
+@mixin anim-gradient-slide() {
+	@keyframes gradient-slide {
+		from {
+			right: 100%;
+		}
+	
+		to {
+			right: -400%;
+		}
+	}
+}
+
+@mixin run-gradient-slide() {
+	background-color: rgba(192, 192, 192, 0.2);
+	position: relative;
+	overflow: hidden;
+	
+	&::before {
+		content: "";
+		@include abs-top-right(0%, 0%, 1, 9rem);
+		background-image: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+		animation: gradient-slide $var-transition-time-xxl ease infinite;
+	}
+}

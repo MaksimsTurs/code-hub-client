@@ -10,7 +10,7 @@ import std from "@util/std/std.util";
 export default function Project(props: TProjectProps): JSX.Element {
 	return(
 		<li className={selectors.project_container}>
-			<Link className="fc-n-n-xs" to={`/project/${props.project._id}`}>
+			<Link style={{ width: "100%" }} className="fc-n-n-xs" to={`/project/${props.project._id}`}>
 				<div className="fr-n-sp-xs">
 					<h3>{props.project.name}</h3>
 					<p className={selectors.project_visibility_type}>{std.string.firstLetterToUpperCase(props.project.visibility)}</p>

@@ -3,6 +3,7 @@ import type { TCodeHubProject } from "@reducer/use-code-hub/use-code-hub.slice.t
 import type { TUseRequestAllCallbackReturn } from "@hook/use-fetch/use-request-all.hook.type";
 
 import Layout from "@component/Layout/Layout.component";
+import Loader from "./Loader.component.tsx";
 
 import useAuth from "@hook/use-auth/use-auth.hook.ts";
 
@@ -32,7 +33,7 @@ export default function PageLayout(): JSX.Element {
 	};
 
 	return(
-		<Layout loader={<p>Loading</p>} metadata={Metadata} deps={["project/all"]} fetches={[getAllProjects]}>
+		<Layout loader={<Loader/>} metadata={Metadata} deps={["project/all"]} fetches={[getAllProjects]}>
 		  <Page/>
 		</Layout>
 	);

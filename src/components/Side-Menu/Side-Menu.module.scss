@@ -1,0 +1,78 @@
+@use "@scss/variabel" as *;
+@use "@scss/mixin" as *;
+
+.asside_container {
+	@include component-container(0rem);
+	transition: width $var-transition-time-m ease;
+	width: 13rem;
+
+	.asside_logo_container {
+		padding: $var-padding-l;
+		width: 100%;
+
+		img {
+			width: $var-size-xxl;
+			height: $var-size-l;
+		}
+	}
+
+	.asside_links_container {
+		border-bottom: $var-border-white-hight-transparent;
+		padding-bottom: $var-padding-m;
+		margin-bottom: $var-margin-m;
+
+		.asside_link {
+			@include text-overflow();
+			padding: $var-padding-m $var-padding-xxl;
+			border: 1px solid transparent;
+			position: relative;
+			z-index: 0;
+			transition: box-shadow $var-transition-time-s ease;
+
+			& > svg {
+				min-width: 20px;
+			}
+			
+			&::after {
+				content: "";
+				@include abs-top-left(0, 0, -1);
+				border: 1px solid $var-color-hell-salat;
+				background-color: $var-color-hell-salat-hight-transparent;
+				transition: opacity $var-transition-time-s ease;
+				opacity: 0;
+			}
+			
+			&:hover {
+				box-shadow: 0 0 5px 5px $var-color-hell-salat-hight-transparent;
+				transition: box-shadow $var-transition-time-s ease;
+
+				&::after {
+					transition: opacity $var-transition-time-s ease;
+					opacity: 1;
+				}
+
+				& > p {
+					color: $var-color-hell-salat;
+				}
+
+				& > svg {
+					stroke: $var-color-hell-salat;
+				}
+			}
+		}
+	}
+}
+
+.asside_container_close {
+	transition: width  $var-transition-time-m ease;
+	width: 5rem;
+	overflow: hidden;
+
+	.asside_link {
+		justify-content: center;
+
+		&  > p {
+			display: none
+		}
+	}
+}

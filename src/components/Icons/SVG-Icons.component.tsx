@@ -148,3 +148,120 @@ export function IconEyeOff(props: TSVGIconProps): JSX.Element {
 		</svg>
 	);
 };
+
+export function IconUser(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round"
+			viewBox="0 0 24 24"
+			{...props }>
+				<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+				<circle cx="12" cy="7" r="4"/>
+		</svg>
+	);
+};
+
+export function IconUserPlus(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round"
+			viewBox="0 0 24 24"
+			{...props }>
+				<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+				<circle cx="9" cy="7" r="4"/>
+				<path d="M19 8v6M22 11h-6"/>
+		</svg>
+	);
+};
+
+export function IconCreateFolder(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round"
+			viewBox="0 0 24 24"
+			{...props }>
+				<path d="M12 10v6M9 13h6M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8a2 2 0 0 1-2-1V4a2 2 0 0 0-2-1H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>
+		</svg>
+	);
+};
+
+export function IconBookMarked(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round"
+			viewBox="0 0 24 24"
+			{...props }>
+				<path d="M10 2v8l3-3 3 3V2"/><path d="M4 20V5a3 3 0 0 1 3-3h12a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H7a1 1 0 0 1 0-5h13"/>
+		</svg>
+	);
+};
+
+export function IconFolderDot(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round"
+			viewBox="0 0 24 24"
+			{...props }>
+				<path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8a2 2 0 0 1-2-1V4a2 2 0 0 0-2-1H4a2 2 0 0 0-2 2v13l2 2Z"/><circle cx="12" cy="13" r="1"/>
+		</svg>
+	);
+};
+
+export function IconCircleQuestionMark(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round"
+			viewBox="0 0 24 24"
+			{...props }>
+				<circle cx="12" cy="12" r="10"/><path d="M9 9a3 3 0 0 1 6 1c0 2-3 3-3 3M12 17h0"/>
+		</svg>
+	);
+};
+
+export function IconMessageCircleQuestionMark(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor"
+			strokeLinecap="round" 
+			strokeLinejoin="round"
+			viewBox="0 0 24 24"
+			{...props }>
+				<path d="M8 20a9 9 0 1 0-4-4l-2 6Z"/>
+				<path d="M9 9a3 3 0 0 1 6 1c0 2-3 3-3 3M12 17h0"/>
+		</svg>
+	);
+};
+
+export function IconHouse(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round" 
+			viewBox="0 0 24 24"
+			{...props }>
+				<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
+				<path d="M3 10a2 2 0 0 1 1-2l7-6a2 2 0 0 1 2 0l7 6a2 2 0 0 1 1 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+		</svg>
+	);
+};

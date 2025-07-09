@@ -17,7 +17,6 @@ import useAuth from "@hook/use-auth/use-auth.hook";
 
 export default function Page(): JSX.Element {
 	const { withAuth, error } = useAuth<unknown, TCreateProjectServerError>();
-	// { defaultValues: { visibility: "public" }}
 	const { register, reset, handleSubmit, formState: { errors }} = useForm<TCodeHubProject>();
 	const { mutate } = useMutate<TCodeHubProject[], TCodeHubProject, TCodeHubProject[]>("project/all", async function(body, currState) {
 		const newProject = await withAuth<TCodeHubProject>("post", "project/create", body);
@@ -36,12 +35,16 @@ export default function Page(): JSX.Element {
 				<FormSection title="Project Information">
 					<InputText<TCodeHubProject>
 						register={register}
-						error={error?.messages.name || errors.name?.message}
+						label="Project name"
+						placeholder="Project name"
 						autoComplete="on"
 						type="text" 
 						spellCheck="false" 
 						name="name" 
-						placeholder="Project name"
+						error={error?.messages.name || errors.name?.message}
+						aria-required
+						aria-invalid={!!(error?.messages?.name || errors.name?.message)}
+						aria-errormessage={error?.messages?.name || errors.name?.message}
 						validation={{
 							maxLength: { message:"Name is to long!", value: 20 },
 							minLength: { message: "Name is to short!", value: 3 },
@@ -49,12 +52,16 @@ export default function Page(): JSX.Element {
 						}}/>
 					<InputText<TCodeHubProject>
 						register={register}
-						error={error?.messages.description || errors.description?.message}
 						autoComplete="on"
 						type="text"
-						spellCheck="false" 
+						spellCheck="false"
+						label="Project description"
 						name="description" 
 						placeholder="Project description"
+						error={error?.messages.description || errors.description?.message}
+						aria-required
+						aria-invalid={!!(error?.messages?.name || errors.name?.message)}
+						aria-errormessage={error?.messages?.name || errors.name?.message}
 						validation={{	maxLength: { message:"Description is to long!", value: 250 }}}/>
 				</FormSection>
 				<FormSection title="Privacity">

@@ -4,6 +4,12 @@
 .text_input_container {
 	position: relative;
 
+	& > label {
+		margin-bottom: $var-margin-xs;
+		font-size: $var-font-m;
+		display: block;
+	}
+
 	.text_input_body {
 		position: relative;
 
@@ -20,7 +26,7 @@
 		}
 
 		.text_input_password_exposer {
-			@include abs-top-right(50%, 1%, 1, fit-content, fit-content);
+			@include abs-top-right(55%, 1%, 1, fit-content, fit-content);
 			transform: $var-translate-center-center;
 			cursor: pointer;
 		}

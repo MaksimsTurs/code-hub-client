@@ -3,7 +3,6 @@
 
 .presentation_container {
 	@include component-container($var-padding-l $var-padding-xxxxl);
-	animation: bubble-with-opacity $var-transition-time-xxxxl forwards;
 
 	.presentation_img {
 		border-radius: $var-border-radius-xxxxl;
@@ -49,16 +48,15 @@
 
 			&::before {
 				content: "";
-				@include abs-top-left(0%, -50%, 1, 1rem, 200%);
+				@include abs-top-left(0%, -50%, -1, 1rem, 200%);
 				animation: background-position-translation $var-transition-time-xxl infinite;
 				transform: rotate(-45deg) $var-translate-center-center;
 				background-color: $var-color-hell-blue;
-				z-index: -2;
 			}
 
 			&::after {
 				content: "";
-				@include abs-top-left(0%, 0%, 0);
+				@include abs-top-left(0%, 0%, -1);
 				transition: backdrop-filter $var-transition-time-s;
 			}
 		}

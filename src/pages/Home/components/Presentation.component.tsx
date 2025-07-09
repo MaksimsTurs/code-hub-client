@@ -14,10 +14,10 @@ export default function Presentation(): JSX.Element {
 				<p className={selectors.presentation_description}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, minus doloremque inventore reprehenderit rem quas iste a tempore voluptatem animi delectus voluptate. Hic incidunt modi enim! Voluptatibus impedit doloribus nisi!</p>
 				<div className="fc-n-n-xs">
 					<div className="fr-n-n-xs">
-						<img className={selectors.presentation_img} src={testSourceCodeImage}/>
-						<img className={selectors.presentation_img} src={testSourceCodeImage}/>
+						<img className={selectors.presentation_img} src={testSourceCodeImage} alt="Code"/>
+						<img className={selectors.presentation_img} src={testSourceCodeImage} alt="Code"/>
 					</div>
-					<img className={selectors.presentation_img} src={testSourceCodeImage}/>
+					<img className={selectors.presentation_img} src={testSourceCodeImage} alt="Code"/>
 				</div>
 				<div className={`fr-c-n-m ${selectors.presintation_actions_container}`}>
 					<Link to="/sign-in">Log in</Link>

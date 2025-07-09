@@ -3,7 +3,33 @@
 
 .form_container {
 	@include component-container($var-padding-xxxxl $var-padding-xxxxl);
-	width: calc($var-size-xxxxl * 20);
+	width: calc($var-size-xxxxl * 12);
 	max-width: 100%;
+	height: fit-content;
 	flex-shrink: 1;
+}
+
+.form_container {
+	button:not(button:has(svg)),
+	input[type="number"],
+	input[type="email"],
+	input[type="text"],
+	input[type="password"] {
+
+		&:focus-visible {
+			border: 1px solid $var-color-hell-salat !important;
+		}
+	}
+
+	svg {
+		&:focus-visible {
+			stroke: $var-color-hell-salat;
+		}
+	}
+
+	a {
+		&:focus-visible {
+			color: $var-color-hell-salat;
+		}
+	}
 }
