@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import type { LazyExoticComponent } from "react";
 
-import Loader from "./Laoder.component.tsx";
+import Loader from "./Laoder.page.tsx";
 import Layout from "@component/Layout/Layout.component";
 import ProtectRoute from "@hook/use-auth/Protect-Route.component.tsx";
 

@@ -9,7 +9,6 @@ import { Provider } from "react-redux";
 import store from "@reducer/reducer.store";
 
 import ErrorBoundary from "@component/Error-Boundary/Error-Boundary.component";
-// import Header from "@component/Header/Header.component";
 import Footer from "@component/Footer/Footer.component";
 import SideMenu from "@component/Side-Menu/Side-Menu.component";
 
@@ -19,6 +18,7 @@ import Project from "@page/Project/Layout.page";
 import CreateProject from "@page/Create-Project/Layout.page";
 import SignUp from "@page/Sign-Up/Layout.page";
 import SignIn from "@page/Sign-In/Layout.page";
+import Account from "@page/Account/Layout.page";
 
 import fetcher from "./utils/fetcher/fetcher.util";
 
@@ -34,6 +34,7 @@ function App(): JSX.Element {
 				<Route path="/sign-in" element={<SignIn/>}/>
 
 				<Route path="/user/:userId/projects" element={<Projects/>}/>
+				<Route path="/user/:userId" element={<Account/>}/>
 				
 				<Route path="/project/:projectId" element={<Project/>}/>
 				<Route path="/project/create" element={<CreateProject/>}/>
@@ -48,7 +49,7 @@ createRoot(document.getElementById("root") as HTMLElement).render(
 			<ErrorBoundary>
 				<BrowserRouter>
 					<SideMenu/>
-					<div style={{ flexGrow: 1, height: "100vh", overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+					<div id="main-container" style={{ flexGrow: 1, height: "100vh", overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
 						<App/>
 						<Footer/>
 					</div>

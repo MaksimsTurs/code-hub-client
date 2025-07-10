@@ -10,7 +10,7 @@
 	width: calc($var-size-xxxxl * 4);
 	height: calc($var-size-xxxxl * 3);
 
-	& > svg {
+	svg {
 		width: $var-size-xl;
 		height: $var-size-xl;
 	}
@@ -18,7 +18,7 @@
 	.file_input_upload_container {
 		position: relative;
 
-		& > img {
+		img {
 			display: block;
 			width: 100%;
 		}

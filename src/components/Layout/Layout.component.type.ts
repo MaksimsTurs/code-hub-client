@@ -1,5 +1,6 @@
 import type { PropsWithChildren, JSX } from "react";
 import type { TUseFetchCallback } from "@hook/use-fetch/use-fetch.hook.type";
+import type { TUseFetchCacheState } from "@root/reducers/use-fetch/use-fetch.slice.type";
 
 export type TLayoutProps = PropsWithChildren<{
 	deps?: string[]
@@ -8,4 +9,4 @@ export type TLayoutProps = PropsWithChildren<{
 	metadata?: TLayoutMetadataFunc
 }>;
 
-export type TLayoutMetadataFunc = <T>(data: T) => JSX.Element;
+export type TLayoutMetadataFunc = (data: Map<string, TUseFetchCacheState>) => JSX.Element;

@@ -4,7 +4,7 @@
 .text_input_container {
 	position: relative;
 
-	& > label {
+	label {
 		margin-bottom: $var-margin-xs;
 		font-size: $var-font-m;
 		display: block;
@@ -13,7 +13,7 @@
 	.text_input_body {
 		position: relative;
 
-		& > input {
+		input {
 			@include component-container($var-padding-m $var-padding-xl);
 			transition: all $var-transition-time-s;
 			background: none;

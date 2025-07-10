@@ -8,7 +8,7 @@ import withAuth from "./actions/with-auth.action";
 
 const initUseAuthState: TUseAuthSliceState = {
 	accessToken: undefined,
-	isPending: true
+	isPending: false
 };
 
 const useAuthSlice = createSlice({

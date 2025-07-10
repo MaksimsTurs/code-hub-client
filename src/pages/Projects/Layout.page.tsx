@@ -3,7 +3,7 @@ import type { TCodeHubProject } from "@reducer/use-code-hub/use-code-hub.slice.t
 import type { TUseRequestAllCallbackReturn } from "@hook/use-fetch/use-request-all.hook.type";
 
 import Layout from "@component/Layout/Layout.component";
-import Loader from "./Loader.component.tsx";
+import Loader from "./Loader.page.tsx";
 
 import useAuth from "@hook/use-auth/use-auth.hook.ts";
 

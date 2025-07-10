@@ -1,0 +1,19 @@
+@use "@scss/variabel" as *;
+@use "@scss/mixin" as *;
+
+.personal_information_container {
+	@include component-container($var-padding-xl);
+	width: fit-content;
+}
+
+.personal_information_action_button {
+	flex: 1;
+
+	&:first-child {
+		background-color: $var-color-hell-red-hight-transparent;
+
+		&:hover {
+			background-color: $var-color-dark-red;
+		}
+	}
+}

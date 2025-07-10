@@ -1,14 +1,13 @@
-# New update v0.0.4
+# New update v0.0.5
 
 Changes:
-	- Completely changed the website design.
+	- Nothing important.
 
 Added:
-	- Side menu component.
-	- Loaders skeletons.
-	- Focus indecator for accessability.
-	- Some SVG Icons.
-	- ARIA properties.
+	- `Empty` component.
+	- Some SVG icons.
+	- `ProjectsList` component with their sumbcomponents.
+	- `Account` site.
 
 Fixed:
-	- Input labels used semanticaly correct.
+	- Nothing important.

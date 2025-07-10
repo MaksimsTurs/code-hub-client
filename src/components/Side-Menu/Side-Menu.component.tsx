@@ -82,8 +82,6 @@ export default function SideMenu(): JSX.Element {
 					<IconHouse strokeWidth={2} width={20} height={20}/>
 					<p>Home</p>
 				</Link>
-			</div>
-			<div className={`fc-n-n-n ${selectors.asside_links_container}`}>
 				<Link className={`fr-c-n-xs ${selectors.asside_link}`} to="/about" aria-label="Link About us site.">
 					<IconCircleQuestionMark strokeWidth={2} width={20} height={20}/>
 					<p>About</p>

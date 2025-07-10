@@ -265,3 +265,61 @@ export function IconHouse(props: TSVGIconProps): JSX.Element {
 		</svg>
 	);
 };
+
+export function IconTrash2(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round" 
+			viewBox="0 0 24 24"
+			{...props }>
+				<path d="M10 11v6M14 11v6M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+		</svg>
+	);
+};
+
+export function IconPencil(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round"
+			viewBox="0 0 24 24"
+			{...props }>
+				<path d="M21 7a1 1 0 0 0-4-4L4 16a2 2 0 0 0-1 1l-1 4a1 1 0 0 0 1 1l4-1a2 2 0 0 0 1-1zM15 5l4 4"/>
+		</svg>
+	);
+};
+
+export function IconLogOut(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round" 
+			viewBox="0 0 24 24"
+			{...props }>
+				<path d="m16 17 5-5-5-5M21 12H9M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+		</svg>
+	);
+};
+
+export function IconPackageOpen(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round"
+			viewBox="0 0 24 24"
+			{...props }>
+				<path d="M12 22v-9M15 2a2 2 0 0 1 2 0l4 3a2 2 0 0 1 0 3L9 15a2 2 0 0 1-2 0l-4-3a2 2 0 0 1 0-3z"/>
+				<path d="M20 13v4a2 2 0 0 1-1 2l-6 3a2 2 0 0 1-2 0l-6-3a2 2 0 0 1-1-2v-4"/>
+				<path d="M21 12a2 2 0 0 0 0-3L9 2a2 2 0 0 0-2 0L3 5a2 2 0 0 0 0 3l12 7a2 2 0 0 0 2 0z"/>
+		</svg>
+	);
+};

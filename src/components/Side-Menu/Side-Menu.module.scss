@@ -29,7 +29,7 @@
 			z-index: 0;
 			transition: box-shadow $var-transition-time-s ease;
 
-			& > svg {
+			svg {
 				min-width: 20px;
 			}
 			
@@ -51,11 +51,11 @@
 					opacity: 1;
 				}
 
-				& > p {
+				p {
 					color: $var-color-hell-salat;
 				}
 
-				& > svg {
+				svg {
 					stroke: $var-color-hell-salat;
 				}
 			}
@@ -71,7 +71,7 @@
 	.asside_link {
 		justify-content: center;
 
-		&  > p {
+		p {
 			display: none
 		}
 	}

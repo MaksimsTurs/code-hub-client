@@ -1,0 +1,12 @@
+@use "@scss/variabel" as *;
+@use "@scss/mixin" as *;
+
+.empty_container {
+	color: rgb(192, 192, 192);
+	padding: $var-padding-xxxl;
+	font-size: $var-font-xxl;
+
+	svg {
+		stroke: silver;
+	}
+}

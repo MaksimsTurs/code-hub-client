@@ -1,0 +1,26 @@
+@use "@scss/variabel" as *;
+@use "@scss/mixin" as *;
+
+.project_item {
+	a {
+		padding: $var-padding-xl;
+		border-bottom: $var-border-white-hight-transparent;
+		width: 100%;
+
+		> * {
+			pointer-events: none;
+		}
+	}
+
+	.project_item_privacity {
+		font-size: $var-font-m;
+		padding: $var-padding-xs $var-padding-m;
+		background-color: $var-color-black-hight-transparent;
+		border-radius: $var-border-radius-xxxxl;
+	}
+	
+	.project_item_description {
+		color: $var-color-white-hight-transition;
+		font-size: $var-font-m;
+	}
+}
