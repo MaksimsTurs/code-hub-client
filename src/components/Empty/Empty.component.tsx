@@ -8,7 +8,7 @@ import { IconPackageOpen } from "../Icons/SVG-Icons.component";
 export default function Empty(props: TEmptyProps): JSX.Element {
 	return(
 		<div className={`fr-c-n-xs ${selectors.empty_container}`}>
-			<IconPackageOpen strokeWidth={1} width={36} height={36}/>
+			<IconPackageOpen strokeWidth={1} width={30} height={30}/>
 			{props.label}
 		</div>
 	);

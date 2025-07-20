@@ -6,7 +6,7 @@
 	box-shadow: $var-box-shadow-container;
 	border: $var-border-white-hight-transparent;
 	
-	& > div > svg {
+	div > svg {
 		width: $var-size-l;
 		height: $var-size-l;
 	}

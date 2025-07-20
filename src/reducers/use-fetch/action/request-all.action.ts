@@ -7,7 +7,6 @@ import type {
 	TUseRequestAllActionReturnData 
 } from "../use-fetch.slice.type";
 
-// TODO: Fix @ts-ignore hell.
 export default createAsyncThunk<TUseFetchActionsReturn<TUseRequestAllActionReturnData>, TUseRequestAllActionParam, { rejectValue: TUseFetchErrorResponse }>(
 	"use-fetch/request-all",
 	async function(params) {

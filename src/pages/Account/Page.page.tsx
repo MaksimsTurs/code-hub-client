@@ -1,22 +1,23 @@
 import type { JSX } from "react";
+import type { TAccountPageParams } from "./Page.page.type";
 import type { TAccount } from "@root/global.type";
 
-import PersonalInformation from "./components/Account-Information.component";
-import ProjectsList from "@root/components/Projects-List/Projects-List.component";
+import AccountInformation from "./components/Account-Information.component";
+import ProjectsList from "@component/Projects-List/Projects-List.component";
 
-import useFetch from "@root/hooks/use-fetch/use-fetch.hook";
+import useFetch from "@hook/use-fetch/use-fetch.hook";
 
 import { useParams } from "react-router-dom";
 
 export default function Page(): JSX.Element {
-	const params = useParams<{ userId: string }>();
+	const params = useParams<TAccountPageParams>();
 	const { getNamedState } = useFetch();
 
-	const accountData = getNamedState<TAccount>(`user/${params.userId}`);
+	const accountData = getNamedState<TAccount>(`user/${params.accountId}`);
 
 	return(
 		<div className="fr-n-n-xs">
-			<PersonalInformation/>
+			<AccountInformation account={accountData?.data!}/>
 			<ProjectsList showDataBoxOnHover projects={accountData?.data?.projects || []}/>
 		</div>
 	);

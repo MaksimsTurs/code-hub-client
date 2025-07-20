@@ -11,6 +11,7 @@ import store from "@reducer/reducer.store";
 import ErrorBoundary from "@component/Error-Boundary/Error-Boundary.component";
 import Footer from "@component/Footer/Footer.component";
 import SideMenu from "@component/Side-Menu/Side-Menu.component";
+import ConfirmModal from "@component/Modals/Confirm-Modal/Confirm-Modal.component";
 
 import Home from "@page/Home/Layout.page";
 import Projects from "@page/Projects/Layout.page";
@@ -19,8 +20,14 @@ import CreateProject from "@page/Create-Project/Layout.page";
 import SignUp from "@page/Sign-Up/Layout.page";
 import SignIn from "@page/Sign-In/Layout.page";
 import Account from "@page/Account/Layout.page";
+import AccountSetting from "@page/Account-Setting/Layout.page";
 
 import fetcher from "./utils/fetcher/fetcher.util";
+
+// TODO: Add Shema markup for better SEO.
+// TODO: Make errors in use fetch hooks generic.
+
+// TODO: Rename use fetch actions folder to "actions".
 
 function App(): JSX.Element {
 	fetcher.base = import.meta.env.DEV ? "http://localhost:4000/" : "https://code-hub-server.vercel.app/";
@@ -34,8 +41,9 @@ function App(): JSX.Element {
 				<Route path="/sign-in" element={<SignIn/>}/>
 
 				<Route path="/user/:userId/projects" element={<Projects/>}/>
-				<Route path="/user/:userId" element={<Account/>}/>
-				
+				<Route path="/account/:accountId" element={<Account/>}/>
+				<Route path="/account/:accountId/setting" element={<AccountSetting/>}/>
+
 				<Route path="/project/:projectId" element={<Project/>}/>
 				<Route path="/project/create" element={<CreateProject/>}/>
 			</Routes>
@@ -49,12 +57,22 @@ createRoot(document.getElementById("root") as HTMLElement).render(
 			<ErrorBoundary>
 				<BrowserRouter>
 					<SideMenu/>
-					<div id="main-container" style={{ flexGrow: 1, height: "100vh", overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+					<div 
+						id="main-container" 
+						style={{ 
+							flexGrow: 1, 
+							height: "100vh", 
+							overflowY: "auto", 
+							display: "flex", 
+							flexDirection: "column", 
+							gap: "0.5rem" 
+						}}>
 						<App/>
 						<Footer/>
 					</div>
 				</BrowserRouter>
 			</ErrorBoundary>
+			<ConfirmModal/>
 		</Provider>
 	</StrictMode>
 );

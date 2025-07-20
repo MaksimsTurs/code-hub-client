@@ -1,67 +1,113 @@
-import type { TUseAuthSliceState } from "./use-auth.slice.type";
+import type { PayloadAction, Draft } from "@reduxjs/toolkit";
+import type { 
+	TUseAuthSliceState, 
+	TUseAuthSignInActionReturn, 
+	TUseAuthAuthActionReturn 
+} from "./use-auth.slice.type";
 
 import { createSlice } from "@reduxjs/toolkit";
 
-import authorization from "./actions/authorization.action";
-import authentication from "./actions/authentication.action";
-import withAuth from "./actions/with-auth.action";
+import auth from "./actions/auth.action";
+import signOut from "./actions/sign-out.action";
+import signIn from "./actions/sign-in.action";
+
+let G_COUNTER: number = 0;
 
 const initUseAuthState: TUseAuthSliceState = {
-	accessToken: undefined,
-	isPending: false
+	accessToken: null,
+	account: null,
+	error: null,
+	isPending: false,
+	isLoading: false,
+	isAuth: false
 };
 
 const useAuthSlice = createSlice({
 	name: "use-auth",
 	initialState: initUseAuthState,
-	reducers: {},
+	reducers: {
+		// Used by useWithAuth.
+		setAccessToken: function(state: Draft<TUseAuthSliceState>, action: PayloadAction<string>) {
+			state.accessToken = action.payload;
+		},
+		setAuthState: function(state: Draft<TUseAuthSliceState>, action: PayloadAction<Partial<TUseAuthSliceState>>) {
+			for(let key in action.payload) {
+				// @ts-ignore
+				state[key] = action.payload[key];
+			}
+		},
+		resetError: function(state: Draft<TUseAuthSliceState>) {
+			state.error = null;
+		},
+		deleteData: function(state: Draft<TUseAuthSliceState>) {
+			state.account = null;
+			state.accessToken = null;
+		}
+	},
 	extraReducers: function(builder) {
 		builder
-			//
-			// Authorization
-			//
-			.addCase(authorization.pending, function(state) {
+			.addCase(auth.pending, function(state: Draft<TUseAuthSliceState>) {
 				state.isPending = true;
+				state.isAuth = true;
+				state.isLoading = !!G_COUNTER;
+
+				G_COUNTER++;
 			})
-			.addCase(authorization.rejected, function(state, _action: ReturnType<typeof authorization.rejected>) {
+			.addCase(auth.rejected, function(state: Draft<TUseAuthSliceState>) {
 				state.isPending = false;
+				state.isAuth = false;
+				state.isLoading = false;
 			})
-			.addCase(authorization.fulfilled, function(state, action: ReturnType<typeof authorization.fulfilled>) {
+			.addCase(auth.fulfilled, function(state: Draft<TUseAuthSliceState>, action: PayloadAction<TUseAuthAuthActionReturn>) {
+				state.accessToken = action.payload.accessToken;
+				state.account = action.payload.account;
+
+				state.isAuth = false;
+				state.isPending = false;
+				state.isLoading = false;
+			})
+			//====================================================================================
+			//====================================================================================
+			//====================================================================================
+			.addCase(signIn.pending, function(state: Draft<TUseAuthSliceState>) {
+				state.isPending = true;
+				state.isLoading = !!G_COUNTER;
+
+				G_COUNTER++;
+			})
+			.addCase(signIn.rejected, function(state: Draft<TUseAuthSliceState>) {
+				state.isPending = false;
+				state.isLoading = false;
+			})
+			.addCase(signIn.fulfilled, function(state: Draft<TUseAuthSliceState>, action: PayloadAction<TUseAuthSignInActionReturn>) {
 				state.accessToken = action.payload.accessToken;
 				state.account = action.payload.account;
 
 				state.isPending = false;
+				state.isLoading = false;
 			})
-			//
-			//	Authentication
-			//
-			.addCase(authentication.pending, function(state) {
+			//====================================================================================
+			//====================================================================================
+			//====================================================================================
+			.addCase(signOut.pending, function(state: Draft<TUseAuthSliceState>) {
 				state.isPending = true;
+				state.isLoading = !!G_COUNTER;
+
+				G_COUNTER++;
 			})
-			.addCase(authentication.rejected, function(state, _action: ReturnType<typeof authentication.rejected>) {
+			.addCase(signOut.rejected, function(state: Draft<TUseAuthSliceState>) {
 				state.isPending = false;
+				state.isLoading = false;
 			})
-			.addCase(authentication.fulfilled, function(state, action: ReturnType<typeof authentication.fulfilled>) {
-				state.accessToken = action.payload.accessToken;
-				state.account = action.payload.account;
+			.addCase(signOut.fulfilled, function(state: Draft<TUseAuthSliceState>) {
+				state.accessToken = null;
+				state.account = null
 
 				state.isPending = false;
-			})
-			//
-			// WithAut
-			//
-			.addCase(withAuth.pending, function(state) {
-				state.isPending = true;
-			})
-			.addCase(withAuth.rejected, function(state, _action: ReturnType<typeof withAuth.rejected>) {
-				state.isPending = false;
-			})
-			.addCase(withAuth.fulfilled, function(state, action: ReturnType<typeof withAuth.fulfilled>) {
-				state.accessToken = action.payload.accessToken;
-
-				state.isPending = false;
+				state.isLoading = false;
 			})
 	}
 });
 
+export const { setAccessToken, setAuthState, resetError, deleteData } = useAuthSlice.actions;
 export default useAuthSlice.reducer;

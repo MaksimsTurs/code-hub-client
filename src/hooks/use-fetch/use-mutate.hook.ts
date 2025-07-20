@@ -18,7 +18,7 @@ export default function useMutate<R, B, S>(key: string, func: TUseMutateFunction
 	return {
 		...getStateFromCache<S>(store.cache[key]?.state),
 		mutate: function<B>(body: B): void {
-			dispatch(mutate({ newKeys: [key], prevKeys: [prevKey.current], func, body, currState: store.cache[key]?.state }));
+			dispatch(mutate({ newKeys: [key], prevKeys: [prevKey.current], func, body, currState: store.cache[key]?.state.data }));
 			prevKey.current = key;
 		}
 	}

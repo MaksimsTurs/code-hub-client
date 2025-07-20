@@ -1,7 +1,8 @@
 import type { LazyExoticComponent, JSX } from "react";
-import type { TUseRequestAllCallbackReturn } from "@root/hooks/use-fetch/use-request-all.hook.type.ts";
+import type { TUseRequestAllCallbackReturn } from "@hook/use-fetch/use-request-all.hook.type.ts";
 import type { TAccount } from "@root/global.type.ts";
-import type { TUseFetchCacheState } from "@root/reducers/use-fetch/use-fetch.slice.type";
+import type { TUseFetchCacheState } from "@reducer/use-fetch/use-fetch.slice.type";
+import type { TAccountPageParams } from "./Page.page.type.ts";
 
 import Layout from "@component/Layout/Layout.component";
 import Loader from "./Loader.page.tsx";
@@ -16,8 +17,8 @@ import { Fragment, lazy } from "react";
 const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
 
 function Metadata(data: Map<string, TUseFetchCacheState>): JSX.Element {
-	const params = useParams<{ userId: string }>();
-	const accountName: string | undefined = data.get(`user/${params.userId}`)?.data?.name;
+	const params = useParams<TAccountPageParams>();
+	const accountName: string | undefined = data.get(`user/${params.accountId}`)?.data?.name;
 
 	return(
 		<Fragment>
@@ -29,20 +30,19 @@ function Metadata(data: Map<string, TUseFetchCacheState>): JSX.Element {
 };
 
 export default function PageLayout(): JSX.Element {
-	const params = useParams<{ userId: string }>();
-	const { authorization } = useAuth();
-
-	authorization("user/authorization");
+	const params = useParams<TAccountPageParams>();
+	
+	useAuth().auth("account/auth");
 
 	const getAccountById = (): TUseRequestAllCallbackReturn<TAccount> => {
-		return fetcher.get<TAccount>(`user/${params.userId}`);
+		return fetcher.get<TAccount>(`account/${params.accountId}`);
 	};
 
 	return(
 		<Layout 
 			loader={<Loader/>} 
 			metadata={Metadata} 
-			deps={[`user/${params.userId}`]}
+			deps={[`user/${params.accountId}`]}
 			fetches={[getAccountById]}>
 		  <Page/>
 		</Layout>

@@ -14,17 +14,17 @@ const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
 function Metadata(): JSX.Element {
 	return(
 		<Fragment>
-			<title>Create Project</title>
-			<meta name="description" content="Here you can create a new Project."/>
+			<title>Code Hub - Create Project</title>
+			<meta name="description" content="Here you can create you new Project."/>
 			<meta name="robots" content="index,follow"></meta>
 		</Fragment>
 	);
 };
 
 export default function PageLayout(): JSX.Element {
-	const { account, authorization } = useAuth();
+	const { account, auth } = useAuth();
 
-	authorization("user/authorization");
+	auth("account/auth");
 
 	return(
 		<ProtectRoute redirectUrl="/" or={[account]}>

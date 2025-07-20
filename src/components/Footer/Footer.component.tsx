@@ -9,20 +9,20 @@ export default function Footer(): JSX.Element {
 		<footer className={selectors.footer_container}>
       <div className="fr-n-sp-xs">
 			  <div className="fc-n-sp-xs">
-				  <Link className={selectors.footer_websitename} to="/">Code Hub</Link>
+				  <Link className={`${selectors.footer_websitename}`} to="/">Code Hub</Link>
          	<ul className="fr-n-n-xs">
 						<li>
-						  <Link className={selectors.footer_media_icon} to="/" aria-label="Link to the our Twitter Account">
+						  <Link className={`${selectors.footer_media_icon}`} to="/" aria-label="Link to the our Twitter Account">
 						    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="m22 4-2 3c2 10-9 18-18 12l6-2c-5-1-7-7-5-12 2 3 6 4 9 4-1-4 4-7 7-4l3-1z"/></svg>
 						  </Link>
 						</li>
 						<li>
-						  <Link className={selectors.footer_media_icon} to="/" aria-label="Link to the our Twitter Account">
+						  <Link className={`${selectors.footer_media_icon}`} to="/" aria-label="Link to the our Twitter Account">
 						    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="m22 4-2 3c2 10-9 18-18 12l6-2c-5-1-7-7-5-12 2 3 6 4 9 4-1-4 4-7 7-4l3-1z"/></svg>
 						  </Link>
 						</li>
 						<li>
-  						<Link className={selectors.footer_media_icon} to="/" aria-label="Link to the our Twitter Account">
+  						<Link className={`${selectors.footer_media_icon}`} to="/" aria-label="Link to the our Twitter Account">
 	  					  <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="m22 4-2 3c2 10-9 18-18 12l6-2c-5-1-7-7-5-12 2 3 6 4 9 4-1-4 4-7 7-4l3-1z"/></svg>
 		  			  </Link>
 						</li>
@@ -33,21 +33,21 @@ export default function Footer(): JSX.Element {
 						<p className={selectors.footer_list_title}>Contacts</p>
             <ul className={`fc-n-n-xs ${selectors.footer_list_body}`}>
 						  <li>
-							  <Link to="#">+49123456789</Link>
+							  <Link className="accessibility_text-heaven_blue" to="#">+49123456789</Link>
 						  </li>
 						  <li>
-							  <Link to="#">codehub@gmail.com</Link>
+							  <Link className="accessibility_text-heaven_blue" to="#">codehub@gmail.com</Link>
 						  </li>
 					  </ul>
 					</div>
 					<div className="fc-n-n-m">
 						<p className={selectors.footer_list_title}>Pages</p>
             <ul className={`fc-n-n-xs ${selectors.footer_list_body}`}>
-							<li>
-							  <Link to="/about">About</Link>
+						  <li>
+							  <Link className="accessibility_text-heaven_blue" to="/about">About</Link>
 						  </li>
 						  <li>
-							  <Link to="/documentation">Documentation</Link>
+							  <Link className="accessibility_text-heaven_blue" to="/documentation">Documentation</Link>
 						  </li>
 	  				</ul>
 					</div>

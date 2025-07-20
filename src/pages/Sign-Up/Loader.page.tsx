@@ -7,7 +7,7 @@ import { SkeletonBox, SkeletonCircle, SkeletonContainer, SkeletonBody, SkeletonS
 export default function Loader(): JSX.Element {
 	return(
 		<SkeletonContainer layout="fr-c-c-n">
-			<SkeletonBody layout="fc-n-n-n" padding="2rem" width="25rem">
+			<SkeletonBody layout="fc-n-n-n" padding="2rem" width="32rem">
 				<SkeletonSection layout="fr-c-n-xs" className={selectors.skeleton_head}>
 					<SkeletonCircle width="48px" height="48px"/>
 					<SkeletonBox height="2.5rem" width="8rem"/>

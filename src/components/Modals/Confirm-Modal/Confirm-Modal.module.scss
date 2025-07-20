@@ -1,0 +1,72 @@
+@use "@scss/variabel" as *;
+@use "@scss/mixin" as *;
+
+.confirm_modal_container {
+	@include fix-top-left(0%, 0%, 1, 100%, 100%);
+	background-color: $var-color-black-hight-transparent;
+	transition: 
+		opacity $var-transition-time-s, 
+		visibility $var-transition-time-s;
+	opacity: 0;
+	visibility: hidden;
+
+	.confirm_modal_body {
+		background-color: #ffffff;
+		box-shadow: 8px 8px 0 0 #ffffff80;
+		max-width: 24rem;
+		
+		* {
+			color: #000000;
+		}
+
+		.confirm_modal_head {
+			padding: $var-padding-l $var-padding-xl;
+			border-bottom: 1px solid $var-color-black-hight-transparent;
+
+			&:first-child {
+				font-size: $var-font-xxl;
+			}
+
+			button {
+				background-color: $var-color-dark-red;
+				padding: $var-padding-xs;
+				transition: background-color $var-transition-time-xs;
+				box-shadow: 3px 3px 0 0 $var-color-dark-red-hight-transparent;
+
+				&:hover {
+					transition: background-color $var-transition-time-xs;
+					background-color: $var-color-dark-red-middle-transparent;
+				}
+
+				svg {
+					stroke: #ffffff;
+				}
+			}
+		}
+
+		.confirm_modal_section {
+			padding: $var-padding-l $var-padding-xl;
+	
+			.confirm_modal_button {
+				font-size: $var-font-l;
+				background-color: $var-color-hell-salat;
+				padding: $var-padding-s $var-padding-xl;
+				margin-top: $var-margin-l;
+				transition: background-color $var-transition-time-xs;
+				
+				&:hover {
+					background-color: $var-color-hell-salat-middle-transparent;
+					transition: background-color $var-transition-time-xs;
+				}
+			}
+		}
+	}
+}
+
+.confirm_modal_container_open {
+	transition: 
+		opacity $var-transition-time-s, 
+		visibility $var-transition-time-s;
+	opacity: 1;
+	visibility: visible;
+}

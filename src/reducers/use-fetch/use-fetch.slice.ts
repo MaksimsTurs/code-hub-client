@@ -20,6 +20,9 @@ const useFetchSlice = createSlice({
 	name: "use-fetch",
 	initialState: initUseFetchState,
 	reducers: {
+		setNamedStateError: function(store, action: PayloadAction<{name:string,error:unknown}>) {
+			store.cache[action.payload.name].state.error = action.payload.error;
+		},
 		invalidateCache: function(store, action: PayloadAction<string>) {
 			if(action.payload in store.cache) {
 				delete store.cache[action.payload];
@@ -75,7 +78,6 @@ const useFetchSlice = createSlice({
 				}
 			})
 			.addCase(requestAll.rejected, function(store, action: ReturnType<typeof requestAll.rejected>) {
-				// TODO: Maybe save the error to the "store.globalError" field, think about it.
 				const length: number = action.meta.arg.newKeys.length;
 					
 				let index: number = 0;
@@ -156,6 +158,7 @@ const useFetchSlice = createSlice({
 
 export const {
 	invalidateCache,
+	setNamedStateError
 } = useFetchSlice.actions;
 
 export default useFetchSlice.reducer;

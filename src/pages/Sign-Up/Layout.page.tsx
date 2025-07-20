@@ -10,8 +10,9 @@ const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
 function Metadata(): JSX.Element {
 	return(
 		<Fragment>
-			<title>Sign Up</title>
-			<meta name="description" content="Here you can create a new account."/>
+			<title>Code Hub - Sign Up</title>
+			<meta name="description" content="Create a new Code Hub Account to open full functionality!"/>
+			<meta name="keywords" content="Code Hub, registration, sign up"/>
 			<meta name="robots" content="index,follow"></meta>
 		</Fragment>
 	);

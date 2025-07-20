@@ -7,6 +7,7 @@ export type TFetcher = {
   base?: string
   get: <R = unknown, E = TFetcherServerError>(url: string, headers?: THeaders, options?: TFetcherOptions) => Promise<TFetcherReturn<R, E>>
   post: <R = unknown, E = TFetcherServerError>(url: string, body?: any, headers?: THeaders, options?: TFetcherOptions) => Promise<TFetcherReturn<R, E>>
+  delete: <R = unknown, E = TFetcherServerError>(url: string, body?: any, headers?: THeaders, options?: TFetcherOptions) => Promise<TFetcherReturn<R, E>>
 };
 
 export type TFetcherReturn<D, E> = {

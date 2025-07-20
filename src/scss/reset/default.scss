@@ -9,6 +9,10 @@
 	border: none;
 	color: white;
 	
+	&:focus {
+		outline: none;
+	}
+
 	&:before,
 	&:after {
 		box-sizing: border-box;
@@ -57,8 +61,4 @@ button {
 	border: none;
 	width: fit-content;
 	cursor: pointer;
-}
-
-*:focus {
-	outline: none;
 }

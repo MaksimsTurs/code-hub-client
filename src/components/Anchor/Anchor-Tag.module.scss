@@ -1,0 +1,26 @@
+@use "@scss/variabel" as *;
+@use "@scss/mixin" as *;
+
+.anchor_tag {
+	color: $var-color-white-hight-transition;
+	transition: 
+		background-color $var-transition-time-xs,
+		color $var-transition-time-xs;
+	padding: $var-padding-s;
+	position: relative;
+	width: 100%;
+	font-weight: 400;
+
+	&:hover {
+		color: $var-color-hell-salat;
+		background-color: $var-color-black-hight-transparent;
+		transition: 
+			background-color $var-transition-time-xs,
+			color $var-transition-time-xs;
+	}
+}
+
+.anchor_tag_active {
+	color: $var-color-hell-salat;
+	background-color: $var-color-black-hight-transparent;
+}

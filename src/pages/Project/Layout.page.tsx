@@ -9,7 +9,7 @@ const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
 function Metadata(): JSX.Element {
 	return(
 		<Fragment>
-			<title>Project</title>
+			<title>Code Hub - Project</title>
 			<meta name="description" content="Here you can see a xy Project."/>
 			<meta name="robots" content="index,follow"></meta>
 		</Fragment>

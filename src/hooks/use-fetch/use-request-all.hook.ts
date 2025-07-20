@@ -35,14 +35,14 @@ export default function useRequestAll(deps: string[], fetches: TUseFetchCallback
 	useEffect(() => {		
 		if((!isUndefinedOrNull(options?.refetchOnlyWhenAllDepsChanged) && areAllDepsNotEqual(deps, prevDeps.current)) || 
 			 isUndefinedOrNull(options?.refetchOnlyWhenAllDepsChanged)) {
-			dispatch(requestAll({ promises: collectPromises(fetches, deps, cache), newKeys: deps, prevKeys: prevDeps.current }));
+			dispatch(requestAll({ promises: collectPromises(fetches), newKeys: deps, prevKeys: prevDeps.current }));
 			prevDeps.current = deps;
 		}
 
 	}, deps);
 
 	function manualRequestCall(): void {
-		dispatch(requestAll({ promises: collectPromises(fetches, prevDeps.current, cache), newKeys: deps, prevKeys: prevDeps.current }));
+		dispatch(requestAll({ promises: collectPromises(fetches), newKeys: deps, prevKeys: prevDeps.current }));
 	};
 
 	return {

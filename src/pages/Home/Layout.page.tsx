@@ -12,17 +12,16 @@ const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
 function Metadata(): JSX.Element {
 	return(
 		<Fragment>
-			<title>Code Hub</title>
-			<meta name="description" content="Main page of Code Hub."/>
+			<title>Code Hub - Home</title>
+			<meta name="description" content="Eine moderne, leichte Alternative zu GitHub – verwalte Repositories, Issues und Projekte effizient und unabhängig. Für Entwickler, die Kontrolle, Übersicht und Performance schätzen."/>
+			<meta name="keywords" content="Github, Repositories, Projekte, effizient, modern, alternative"/>
 			<meta name="robots" content="index,follow"></meta>
 		</Fragment>
 	);
 };
 
 export default function PageLayout(): JSX.Element {
-	const { authorization } = useAuth();
-
-	authorization("user/authorization");
+	useAuth().auth("account/auth");
 
 	return(
 		<Layout loader={<Loader/>} metadata={Metadata}>

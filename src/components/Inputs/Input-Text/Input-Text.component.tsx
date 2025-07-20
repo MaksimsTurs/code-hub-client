@@ -9,8 +9,7 @@ import { useState } from "react";
 
 import selectors from "./Input-Text.module.scss";
 
-// TODO: Make password exposer focusable.
-export default function TextInput<T>({ error, validation, label, register, type, ...otherProps }: TInputTextProps<TExtendFieldValues<T>>): JSX.Element {
+export default function InputText<T>({ error, validation, label, register, type, ...otherProps }: TInputTextProps<TExtendFieldValues<T>>): JSX.Element {
 	const [isPasswordExposed, setPasswordExposed] = useState<boolean>(false);
 
 	const exposePassword = (): void => {

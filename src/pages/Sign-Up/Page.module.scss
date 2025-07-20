@@ -1,0 +1,18 @@
+@use "@scss/variabel" as *;
+@use "@scss/mixin" as *;
+
+.signup_container {
+	height: 100%;
+
+	a {
+		font-size: $var-font-m;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.signup_form {
+		width: 25rem;
+	}
+}

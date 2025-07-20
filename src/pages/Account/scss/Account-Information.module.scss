@@ -8,8 +8,9 @@
 
 .personal_information_action_button {
 	flex: 1;
+	width: 100%;
 
-	&:first-child {
+	&:nth-child(1) {
 		background-color: $var-color-hell-red-hight-transparent;
 
 		&:hover {

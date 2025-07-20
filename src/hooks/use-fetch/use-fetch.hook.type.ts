@@ -3,6 +3,7 @@ import type { TFetcherReturn } from "@util/fetcher/fetcher.util.type";
 
 export type TUseFetchReturn = {
 	getNamedState: <R = unknown>(name: string) => TUseFetchCacheState<R> | undefined
+	setNamedStateError: (name: string, error: unknown) => void;
 	invalidateCache: (name: string) => void
 };
 

@@ -8,7 +8,7 @@ export default function DescriptionCard(props: TDescriptionCardProps): JSX.Eleme
 		<section className={`fc-n-n-xs ${selectors.description_card_container}`}>
 			<div className="fr-c-n-xs">
 				{props.icon}
-				<h3>{props.title}</h3>
+				<h2>{props.title}</h2>
 			</div>
 			<p className={selectors.description_card_text}>{props.text}</p>
 		</section>

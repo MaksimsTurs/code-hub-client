@@ -5,11 +5,10 @@ import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 
-import Form from "@component/Form/Form.component";
-import FormHeader from "@component/Form/Form-Header.component";
 import InputText from "@component/Inputs/Input-Text/Input-Text.component";
 import Button from "@component/Button/Button.component";
 import ErrorBox from "@component/Errors/Error-Box/Error-Box.component";
+import { Form, FormHeader } from "@component/Form/Form.component";
 import { IconUserCircle } from "@component/Icons/SVG-Icons.component";
 
 import std from "@util/std/std.util";
@@ -18,22 +17,20 @@ import useAuth from "@hook/use-auth/use-auth.hook";
 import selectors from "./Page.module.scss";
 
 export default function Page(): JSX.Element {
-	const navigate = useNavigate();
-	const { authentication, error } = useAuth<unknown, TSignInServerError>();
+	const redirect = useNavigate();
+	const { signIn, error } = useAuth<unknown, TSignInServerError>();
 	const { handleSubmit, register, reset, formState: { errors }} = useForm<TSignInData>()
 
-	const signIn: SubmitHandler<TSignInData> = async(data): Promise<void> => {
-		const isAuthenticated = await authentication("user/sign-in", std.object.createFormDataFromJSON(data));
-
-		if(isAuthenticated) {
+	const submit: SubmitHandler<TSignInData> = async(data): Promise<void> => {
+		if(await signIn("account/sign-in", std.object.createFormDataFromJSON(data))) {
 			reset();
-			navigate("/");
+			redirect("/");
 		}
 	};
 	
 	return(
 		<div className={`fr-c-c-n ${selectors.signin_container}`}>
-			<Form onSubmit={handleSubmit(signIn)}>
+			<Form className={selectors.signin_form} onSubmit={handleSubmit(submit)}>
 				<FormHeader>
 					<IconUserCircle width={36} height={36}/>
 					<h1>Sign in</h1>
@@ -43,7 +40,7 @@ export default function Page(): JSX.Element {
 					name="name"
 					label="Name"
 					autoComplete="name"
-					placeholder="Pass you name here..."
+					placeholder="Pass you'r name here..."
 					type="text"
 					spellCheck={false}
 					error={error?.messages?.name || errors.name?.message}
@@ -60,7 +57,7 @@ export default function Page(): JSX.Element {
 					name="email"
 					label="E - mail"
 					autoComplete="email"
-					placeholder="Pass you e - mail here..."
+					placeholder="Pass you'r e - mail here..."
 					type="email"
 					spellCheck={false}
 					error={error?.messages?.email || errors.email?.message}
@@ -76,7 +73,7 @@ export default function Page(): JSX.Element {
 					name="password"
 					label="Passowrd"
 					autoComplete="current-password"
-					placeholder="Pass you password here..."
+					placeholder="Pass you'r password here..."
 					type="password"
 					error={error?.messages?.password || errors.password?.message}
 					aria-required
@@ -86,7 +83,7 @@ export default function Page(): JSX.Element {
 						minLength: { value: 12, message: "Password is to short!" },
 						required:  { value: true, message: "Passowrd is required!" }
 					}}/>
-				{(error && error.code != 422) && <ErrorBox message={error.message}/>}
+				{(error && error.code != 422) ? <ErrorBox message={error.message}/> : null}
 				<Link to="/forgot-password">Forgot password?</Link>
 				<Button>Submit</Button>
 			</Form>

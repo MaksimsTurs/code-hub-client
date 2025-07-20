@@ -1,29 +1,41 @@
-import type { TUseAuthFetcherMethods } from "@hook/use-auth/use-auth.hook.type";
-
 export type TUseAuthSliceState = {
 	isPending: boolean
-	accessToken?: string
-	account?: unknown
+	isLoading: boolean
+	isAuth: boolean
+	accessToken?: string | null
+	account?: unknown | null
+	error?: unknown | null
 };
 
-export type TUseAuthAuthActionsReturn = { 
-	accessToken?: string
-	account: unknown 
+export type TUseAuthSignInBody = FormData | object;
+
+// Should be request URL.
+export type TUseAuthAuthActionParam = string
+
+export type TUseAuthAuthActionReturn = {
+	accessToken: string
+	account: unknown
 };
 
-export type TUseAuthAuthenticationParam = {
+//=======================================================
+//=======================================================
+//=======================================================
+
+export type TUseAuthSignInActionParam = {
 	url: string
-	body: any
+	body: TUseAuthSignInBody
 };
 
-export type TUseAuthWithAuthParam = {
-	method: TUseAuthFetcherMethods
-	url: string
-	body: any
-	accessToken?: string
+export type TUseAuthSignInActionReturn = {
+	accessToken: string
+	account: unknown
 };
 
-export type TUseAuthWithAuthReturn<T> = {
-	data?: T
-	accessToken?: string
-};
+//=======================================================
+//=======================================================
+//=======================================================
+
+// Should be request URL.
+export type TUseAuthSignOutActionParam = string;
+
+export type TUseAuthSignOutActionReturn = void;

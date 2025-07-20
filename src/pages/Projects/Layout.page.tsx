@@ -16,7 +16,7 @@ const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
 function Metadata(): JSX.Element {
 	return(
 		<Fragment>
-			<title>Projects</title>
+			<title>Code Hub - Projects</title>
 			<meta name="description" content="Here you can see a Projects from xy."/>
 			<meta name="robots" content="index,follow"></meta>
 		</Fragment>
@@ -24,9 +24,7 @@ function Metadata(): JSX.Element {
 };
 
 export default function PageLayout(): JSX.Element {
-	const { authorization } = useAuth();
-
-	authorization("user/authorization");
+	useAuth().auth("account/auth");
 		
 	const getAllProjects = async (): TUseRequestAllCallbackReturn<TCodeHubProject[]> => {
 		return await fetcher.get<TCodeHubProject[]>("project/all", undefined, { credentials: "include" });

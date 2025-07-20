@@ -1,17 +1,18 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import type { TUseAuthAuthActionsReturn } from "@reducer/use-auth/use-auth.slice.type";
+import type { TUseAuthAuthActionReturn, TUseAuthAuthActionParam } from "@reducer/use-auth/use-auth.slice.type";
 
 import fetcher from "@util/fetcher/fetcher.util";
 
+import USEFETCH_OBJECT_CONST from "../OBJECT.const";
 import OBJECT_CONST from "@root/OBJECT.const";
 
-export default createAsyncThunk<TUseAuthAuthActionsReturn, string>(
-	"use-auth/authorization",
+export default createAsyncThunk<TUseAuthAuthActionReturn, TUseAuthAuthActionParam>(
+	"use-auth/auth",
 	async function(url, thunkApi) {
 		try {
-			const account = await fetcher.get<TUseAuthAuthActionsReturn>(url, undefined, { credentials: "include" });
-			
+			const account = await fetcher.get<TUseAuthAuthActionReturn>(url, undefined, USEFETCH_OBJECT_CONST.FETCHER_OPTIONS);
+
 			if(account.error) {
 				return thunkApi.rejectWithValue(account.error);
 			}

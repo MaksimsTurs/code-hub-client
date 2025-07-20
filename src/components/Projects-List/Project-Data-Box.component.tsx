@@ -12,12 +12,10 @@ export default function ProjectDataBox(props: TProjectDataBoxProps): JSX.Element
 			className={`fc-n-n-xs ${selectors.project_info_box}`}>
 			<div className="fr-c-sp-xs">
 				<p>Created at:</p>
-				{/* TODO: Write Date formater that return a difference between two dates. */}
 				<p>{props.project.createdAt}</p>
 			</div>
 			<div className="fr-c-sp-xs">
 				<p>Updated at:</p>
-				{/* TODO: Write Date formater that return a difference between two dates. */}
 				<p>{props.project.updatedAt}</p>
 			</div>
 			<div className="fr-c-sp-xs">
@@ -25,12 +23,12 @@ export default function ProjectDataBox(props: TProjectDataBoxProps): JSX.Element
 				<p>{props.project.owners.length}</p>
 			</div>
 			<div className="fr-c-sp-xs">
-				<p>Stars:</p>
-				<p>{props.project.stars.length}</p>
-			</div>
-			<div className="fr-c-sp-xs">
 				<p>Contributors:</p>
 				<p>{props.project.contributors.length}</p>
+			</div>
+			<div className="fr-c-sp-xs">
+				<p>Stars:</p>
+				<p>{props.project.stars.length}</p>
 			</div>
 		</div>
 	);

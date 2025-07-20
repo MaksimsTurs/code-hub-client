@@ -323,3 +323,31 @@ export function IconPackageOpen(props: TSVGIconProps): JSX.Element {
 		</svg>
 	);
 };
+
+export function IconX(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round" 
+			viewBox="0 0 24 24"
+			{...props }>
+				<path d="M18 6 6 18M6 6l12 12"/>
+		</svg>
+	);
+};
+
+export function IconSetting(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round"
+			{...props }>
+				<path d="M12 2h0a2 2 0 0 0-2 2v0a2 2 0 0 1-1 2H8a2 2 0 0 1-2 0h0a2 2 0 0 0-3 1h0a2 2 0 0 0 1 3h0a2 2 0 0 1 1 2v0a2 2 0 0 1-1 2h0a2 2 0 0 0-1 3h0a2 2 0 0 0 3 1h0a2 2 0 0 1 2 0h1a2 2 0 0 1 1 2v0a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v0a2 2 0 0 1 1-2h1a2 2 0 0 1 2 0h0a2 2 0 0 0 3-1h0a2 2 0 0 0-1-3h0a2 2 0 0 1-1-2v0a2 2 0 0 1 1-2h0a2 2 0 0 0 1-3h0a2 2 0 0 0-3-1h0a2 2 0 0 1-2 0h-1a2 2 0 0 1-1-2v0a2 2 0 0 0-2-2z"/>
+				<circle cx="12" cy="12" r="3"/>
+		</svg>
+	)
+}

@@ -1,13 +1,19 @@
-# New update v0.0.5
+# New update v0.0.6
 
 Changes:
-	- Nothing important.
+	- Packages update.
+	- Naming in some files.
 
 Added:
-	- `Empty` component.
-	- Some SVG icons.
-	- `ProjectsList` component with their sumbcomponents.
-	- `Account` site.
+	- `sitemap.xml`
+	- `robots.txt`
+	- `Anchor` component for lists with auto scroll.
+	- Folder with `Modals` and `ConfirmModal`.
+	- `useWithAuth` hook and there types file.
+	- `useConfirm` hook and redux slice.
+	- Some functions to use fetch hook.
+	- Account Setting page.
+	- Loaders.
 
 Fixed:
-	- Nothing important.
+	- Refresh was token doesn't saved after registrating or login.

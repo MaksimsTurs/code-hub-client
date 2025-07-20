@@ -1,5 +1,3 @@
-import type { TCodeHubProjectVisibility } from "./reducers/use-code-hub/use-code-hub.slice.type";
-
 export type TJSPrimitiveTypes = string | number | boolean | undefined | null;
 
 export type TAccount = {
@@ -13,7 +11,7 @@ export type TAccount = {
 export type TProject = {
 	_id: string
 	name: string
-	visibility: TCodeHubProjectVisibility
+	visibility: TProjectVisibility
 	createdAt: Date
 	updatedAt: Date
 	description: string
@@ -21,3 +19,5 @@ export type TProject = {
 	stars: any[]
 	contributors: any[]
 };
+
+export type TProjectVisibility = "public" | "private" | "protected";

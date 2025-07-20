@@ -12,12 +12,6 @@
 		box-shadow: 0 0 10px 2px #00000066;
 	}
 
-	& > div > h2 {
-		font-size: calc($var-font-xxxxl * 2);
-		font-weight: 700;
-		text-align: center;
-	}
-
 	.presentation_description {
 		text-align: center;
 		width: 40rem;
@@ -26,7 +20,7 @@
 	.presintation_actions_container {
 		margin-top: $var-margin-l;
 
-		& > a {
+		.presintation_link {
 			padding: $var-padding-l $var-padding-xxl;
 			color: $var-color-hell-blue;
 			transition: border-radius $var-transition-time-s;
