@@ -1,12 +1,12 @@
 @use "@scss/variabel" as *;
 @use "@scss/mixin" as *;
 
-.asside_container {
+.aside_container {
 	@include component-container(0rem);
 	transition: width $var-transition-time-m ease;
 	width: 13rem;
 
-	.asside_logo_container {
+	.aside_logo_container {
 		padding: $var-padding-l;
 		width: 100%;
 
@@ -16,21 +16,21 @@
 		}
 	}
 
-	.asside_links_container {
+	.aside_links_container {
 		border-bottom: $var-border-white-hight-transparent;
 		padding-bottom: $var-padding-m;
 		margin-bottom: $var-margin-m;
 	}
 }
 
-.asside_container_close {
+.aside_container_close {
 	transition: width  $var-transition-time-m ease;
 	width: 5rem;
 
 	a {
 		justify-content: center;
 
-		.asside_link_name {
+		.aside_link_name {
 			display: none
 		}
 	}

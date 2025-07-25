@@ -11,7 +11,7 @@ export default function SideMenuLink({ href, children, ...otherProps }: TSideMen
 
 	return(
 		<Link 
-			className={`fr-c-n-xs ${selectors.asside_link} ${isCurrentPage ? selectors.aside_link_active : ""}`} 
+			className={`fr-c-n-xs ${selectors.aside_link} ${isCurrentPage ? selectors.aside_link_active : ""}`} 
 			to={href}
 			{...otherProps}> 
 			{children}

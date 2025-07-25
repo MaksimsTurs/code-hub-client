@@ -33,80 +33,80 @@ export default function SideMenu(): JSX.Element {
 	};
 
 	return(
-		<aside className={`${!isExpanded ? selectors.asside_container_close : ""} ${selectors.asside_container}`}>
-			<button tabIndex={-1} onClick={expandSideMenu} className={`fr-c-c-n ${selectors.asside_logo_container}`} aria-label="Side menu resizer.">
+		<aside className={`${!isExpanded ? selectors.aside_container_close : ""} ${selectors.aside_container}`}>
+			<button tabIndex={-1} onClick={expandSideMenu} className={`fr-c-c-n ${selectors.aside_logo_container}`} aria-label="Side menu resizer.">
 				<img src={logoSrc} alt="Code Hub logo." title="Code Hub logo."/>
 			</button>
 			{isAuth ? 
-			<div className={`fc-n-n-xs ${selectors.asside_links_container}`}>
+			<div className={`fc-n-n-xs ${selectors.aside_links_container}`}>
 				<ItemLoader/>
 				<ItemLoader/>
 			</div> : account ? 
-			<div className={`fc-n-n-n ${selectors.asside_links_container}`}>
+			<div className={`fc-n-n-n ${selectors.aside_links_container}`}>
 				<SideMenuLink
 					href={`/account/${account._id}`} 
 					aria-label="Link to user page.">
 					<IconUserCircle strokeWidth={2} width={20} height={20}/>
-					<p className={selectors.asside_link_name}>{account.name}</p>
+					<p className={selectors.aside_link_name}>{account.name}</p>
 				</SideMenuLink>
 			</div> : 
-			<div className={`fc-n-n-n ${selectors.asside_links_container}`}>
+			<div className={`fc-n-n-n ${selectors.aside_links_container}`}>
 				<SideMenuLink 
 					href="/sign-in" 
 					aria-label="Link to sign in site.">
 					<IconUser strokeWidth={2} width={20} height={20}/>
-					<p className={selectors.asside_link_name}>Sign in</p>
+					<p className={selectors.aside_link_name}>Sign in</p>
 				</SideMenuLink>
 				<SideMenuLink 
 					href="/sign-up" 
 					aria-label="Link to sign up site.">
 					<IconUserPlus strokeWidth={2} width={20} height={20}/>
-					<p className={selectors.asside_link_name}>Sign up</p>
+					<p className={selectors.aside_link_name}>Sign up</p>
 				</SideMenuLink>
 			</div>}
 			{isAuth ?
-			<div className={`fc-n-n-xs ${selectors.asside_links_container}`}>
+			<div className={`fc-n-n-xs ${selectors.aside_links_container}`}>
 				<ItemLoader/>
 				<ItemLoader/>
 			</div> : account ? 
-			<div className={`fc-n-n-n ${selectors.asside_links_container}`}>
+			<div className={`fc-n-n-n ${selectors.aside_links_container}`}>
 				<SideMenuLink 
 					href="/project/create" 
 					aria-label="Link to create project site.">
 					<IconCreateFolder strokeWidth={2} width={20} height={20}/>
-					<p className={selectors.asside_link_name}>Create</p>
+					<p className={selectors.aside_link_name}>Create</p>
 				</SideMenuLink>
 				<SideMenuLink 
 					href="/account/projects" 
 					aria-label="Link to site with you projects.">
 					<IconFolderDot strokeWidth={2} width={20} height={20}/>
-					<p className={selectors.asside_link_name}>Projects</p>
+					<p className={selectors.aside_link_name}>Projects</p>
 				</SideMenuLink>
 				<SideMenuLink 
 					href="/documentation" 
 					aria-label="Link to code hub Documentation.">
 					<IconBookMarked strokeWidth={2} width={20} height={20}/>
-					<p className={selectors.asside_link_name}>Documentation</p>
+					<p className={selectors.aside_link_name}>Documentation</p>
 				</SideMenuLink>
 			</div> : null}
-			<div className={`fc-n-n-n ${selectors.asside_links_container}`}>
+			<div className={`fc-n-n-n ${selectors.aside_links_container}`}>
 				<SideMenuLink 
 					href="/" 
 					aria-label="Link to the Home site.">
 					<IconHouse strokeWidth={2} width={20} height={20}/>
-					<p className={selectors.asside_link_name}>Home</p>
+					<p className={selectors.aside_link_name}>Home</p>
 				</SideMenuLink>
 				<SideMenuLink
 					href="/about" 
 					aria-label="Link About us site.">
 					<IconCircleQuestionMark strokeWidth={2} width={20} height={20}/>
-					<p className={selectors.asside_link_name}>About</p>
+					<p className={selectors.aside_link_name}>About</p>
 				</SideMenuLink>
 				<SideMenuLink 
 					href="/support" 
 					aria-label="Link to support site.">
 					<IconMessageCircleQuestionMark strokeWidth={2} width={20} height={20}/>
-					<p className={selectors.asside_link_name}>Support</p>
+					<p className={selectors.aside_link_name}>Support</p>
 				</SideMenuLink>
 			</div>
 		</aside>

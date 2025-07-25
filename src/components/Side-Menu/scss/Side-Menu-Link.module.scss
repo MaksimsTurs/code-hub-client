@@ -1,7 +1,7 @@
 @use "@scss/variabel" as *;
 @use "@scss/mixin" as *;
 
-.asside_link {
+.aside_link {
 	@include text-overflow();
 	padding: $var-padding-m $var-padding-xxl;
 	transition: box-shadow $var-transition-time-s ease;
@@ -31,8 +31,8 @@
 			opacity: 1;
 		}
 
-		.asside_link_name {
-			color: $var-color-hell-salat;
+		p {
+			color: $var-color-hell-salat !important;
 		}
 
 		svg {
