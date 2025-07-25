@@ -25,7 +25,6 @@ import AccountSetting from "@page/Account-Setting/Layout.page";
 import fetcher from "./utils/fetcher/fetcher.util";
 
 // TODO: Add Shema markup for better SEO.
-// TODO: Make errors in use fetch hooks generic.
 // TODO: Rename use fetch actions folder to "actions".
 // TODO: Make Side menu for some devie widths fixed positioning.
 
