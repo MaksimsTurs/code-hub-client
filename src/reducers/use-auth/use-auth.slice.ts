@@ -89,19 +89,24 @@ const useAuthSlice = createSlice({
 			//====================================================================================
 			//====================================================================================
 			//====================================================================================
-			.addCase(signOut.pending, function(state: Draft<TUseAuthSliceState>) {
+			.addCase(signOut.pending, function(state: Draft<TUseAuthSliceState>, action) {
+				console.log("REJECT", action)
+
 				state.isPending = true;
 				state.isLoading = !!G_COUNTER;
 
 				G_COUNTER++;
 			})
-			.addCase(signOut.rejected, function(state: Draft<TUseAuthSliceState>) {
+			.addCase(signOut.rejected, function(state: Draft<TUseAuthSliceState>, action) {
+				console.log("REJECT", action)
 				state.isPending = false;
 				state.isLoading = false;
 			})
 			.addCase(signOut.fulfilled, function(state: Draft<TUseAuthSliceState>) {
+				console.log("BEFORE", state.accessToken, state.account)
 				state.accessToken = null;
-				state.account = null
+				state.account = null;
+				console.log("AFTER", state.accessToken, state.account)
 
 				state.isPending = false;
 				state.isLoading = false;

@@ -20,8 +20,8 @@ export default function(param: BuildOptions): UserConfig["build"] {
 			ecma: 2020,
 			compress: {
 				arguments: true,
-				drop_console: true,
-				drop_debugger: true,
+				drop_console: false,
+				drop_debugger: false,
 				expression: true,
 			},
 		},
