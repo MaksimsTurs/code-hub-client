@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 import useAuth from "@hook/use-auth/use-auth.hook";
 
 import testSourceCodeImage from "../Test.png";
-import logo from "../../../../ignore/logo-earesed.png";
+import logo from "../logo-earesed.png";
+
 import PresentationCards from "./Presentation-Cards.component";
 
 export default function Presentation(): JSX.Element {
