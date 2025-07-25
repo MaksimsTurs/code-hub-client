@@ -12,9 +12,9 @@ export default function Page(): JSX.Element {
 	const projects = getNamedState<TProject[]>("project/all");
 
 	return(
-		<div className="fc-n-n-xs">
+		<main className="fc-n-n-xs">
 			<ProjectsList projects={projects?.data || []}/>
 			<Button>Show more</Button>
-		</div>
+		</main>
 	);
 };

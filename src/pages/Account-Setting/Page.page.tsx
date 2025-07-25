@@ -54,43 +54,45 @@ export default function Page(): JSX.Element {
 	};
 
 	return(
-		<AnchorTagLayout>
-			<AnchorTagContainer>
-				<AnchorTagBody hash="personal-information" title="Personal Information">
-					<Form id="change-account" isChild onSubmit={handleSubmit(changeAccountData)}>
-						<InputText
-							register={register}
-							label="You new Account name"
-							name="name"
-							placeholder="Pass you'r name here..."
-							type="text"
-							spellCheck={false}
-							error={(error as TChangeAccountDataServerError)?.messages?.name || errors.name?.message}
-							aria-required
-							aria-invalid={!!((error as TChangeAccountDataServerError)?.messages?.name || errors.name?.message)}
-							aria-errormessage={(error as TChangeAccountDataServerError)?.messages?.name || errors.name?.message}
-							validation={{
-								pattern:   { value: /[A-Za-z0-9_-]/, message: "Name is not correct!" },
-								maxLength: { value: 20, message: "Name is to long!" },
-								required:  { value: true, message: "Name is required!" }
-							}}/>
-					</Form>
-				</AnchorTagBody>
-				<div className="fr-n-fe-n">
-					<Button form="change-account">Save</Button>
-				</div>
-				<AnchorTagBody hash="accessability" title="Accessability">
-					
-				</AnchorTagBody>
-				<AnchorTagBody hash="design" title="Design">
-					
-				</AnchorTagBody>
-			</AnchorTagContainer>
-			<AnchorTagSideMenu>
-				<AnchorTag hash="personal-information">Personal Information</AnchorTag>
-				<AnchorTag hash="accessability">Accessability</AnchorTag>
-				<AnchorTag hash="design">Design</AnchorTag>
-			</AnchorTagSideMenu>
-		</AnchorTagLayout>
+		<main>
+			<AnchorTagLayout>
+				<AnchorTagContainer>
+					<AnchorTagBody hash="personal-information" title="Personal Information">
+						<Form id="change-account" isChild onSubmit={handleSubmit(changeAccountData)}>
+							<InputText
+								register={register}
+								label="You new Account name"
+								name="name"
+								placeholder="Pass you'r name here..."
+								type="text"
+								spellCheck={false}
+								error={(error as TChangeAccountDataServerError)?.messages?.name || errors.name?.message}
+								aria-required
+								aria-invalid={!!((error as TChangeAccountDataServerError)?.messages?.name || errors.name?.message)}
+								aria-errormessage={(error as TChangeAccountDataServerError)?.messages?.name || errors.name?.message}
+								validation={{
+									pattern:   { value: /[A-Za-z0-9_-]/, message: "Name is not correct!" },
+									maxLength: { value: 20, message: "Name is to long!" },
+									required:  { value: true, message: "Name is required!" }
+								}}/>
+						</Form>
+					</AnchorTagBody>
+					<div className="fr-n-fe-n">
+						<Button form="change-account">Save</Button>
+					</div>
+					<AnchorTagBody hash="accessability" title="Accessability">
+						
+					</AnchorTagBody>
+					<AnchorTagBody hash="design" title="Design">
+						
+					</AnchorTagBody>
+				</AnchorTagContainer>
+				<AnchorTagSideMenu>
+					<AnchorTag hash="personal-information">Personal Information</AnchorTag>
+					<AnchorTag hash="accessability">Accessability</AnchorTag>
+					<AnchorTag hash="design">Design</AnchorTag>
+				</AnchorTagSideMenu>
+			</AnchorTagLayout>
+		</main>
 	);
 };

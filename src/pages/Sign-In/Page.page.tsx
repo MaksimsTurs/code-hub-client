@@ -29,7 +29,7 @@ export default function Page(): JSX.Element {
 	};
 	
 	return(
-		<div className={`fr-c-c-n ${selectors.signin_container}`}>
+		<main className={`fr-c-c-n ${selectors.signin_container}`}>
 			<Form className={selectors.signin_form} onSubmit={handleSubmit(submit)}>
 				<FormHeader>
 					<IconUserCircle width={36} height={36}/>
@@ -87,6 +87,6 @@ export default function Page(): JSX.Element {
 				<Link to="/forgot-password">Forgot password?</Link>
 				<Button>Submit</Button>
 			</Form>
-		</div>
+		</main>
 	);
 };

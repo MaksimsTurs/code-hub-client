@@ -30,7 +30,7 @@ export default function Page(): JSX.Element {
 	};
 
 	return(
-		<div className={`fr-c-c-n ${selectors.signup_container}`}>
+		<main className={`fr-c-c-n ${selectors.signup_container}`}>
 			<Form className={selectors.signup_form} onSubmit={handleSubmit(submit)}>
 				<FormHeader>
 					<IconUserCircle width={36} height={36}/>
@@ -87,6 +87,6 @@ export default function Page(): JSX.Element {
 					}}/>
 				<Button>Sign Up</Button>
 			</Form>
-		</div>
+		</main>
 	);
 };

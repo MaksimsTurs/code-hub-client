@@ -46,7 +46,7 @@ export default function Page(): JSX.Element {
 	};
 
 	return(
-		<div className="fr-c-c-n">
+		<main className="fr-c-c-n">
 			<Form onSubmit={handleSubmit(createNewProject)}>
 				<FormSection title="Project Information">
 					<InputText<TProject>
@@ -111,6 +111,6 @@ export default function Page(): JSX.Element {
 				{(error && (error as TCreateProjectServerError).code != 422) ? <ErrorBox message={(error as TCreateProjectServerError).message}/> : null}
 				<Button type="submit">Create Project</Button>
 			</Form>
-		</div>
+		</main>
 	);
 };
