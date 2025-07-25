@@ -1,0 +1,38 @@
+@use "@scss/variabel" as *;
+@use "@scss/mixin" as *;
+
+.presentation_card_container {
+	@include component-container($var-padding-l $var-padding-xxxxl);
+	transition: 
+		border $var-transition-time-xs,
+		background-color $var-transition-time-xs,
+		box-shadow $var-transition-time-xs,
+		transform $var-transition-time-xs;
+	border: none;
+	cursor: pointer;
+	
+	&:hover {
+		transition: 
+			border $var-transition-time-xs,
+			background-color $var-transition-time-xs,
+			box-shadow $var-transition-time-xs,
+			transform $var-transition-time-xs;
+		background-image: linear-gradient(40deg, $var-color-hell-salat-hight-transparent 25%, $var-color-hell-blue-hight-transparent 75%);
+		box-shadow: -5px 5px 10px 5px $var-color-hell-blue-hight-transparent;
+		transform: rotate3d(0.5, 0.5, 0, 20deg);
+		 
+		.presentation_card_text,
+		.presentation_card_title {
+			color: white;
+		}
+	}
+
+	div > svg {
+		width: $var-size-l;
+		height: $var-size-l;
+	}
+
+	.presentation_card_text {
+		color: $var-color-white-hight-transition;
+	}
+}

@@ -1,13 +1,8 @@
-export type TFetcherServerError = {
-	code: number
-	message: string
-};
-
 export type TFetcher = {
   base?: string
-  get: <R = unknown, E = TFetcherServerError>(url: string, headers?: THeaders, options?: TFetcherOptions) => Promise<TFetcherReturn<R, E>>
-  post: <R = unknown, E = TFetcherServerError>(url: string, body?: any, headers?: THeaders, options?: TFetcherOptions) => Promise<TFetcherReturn<R, E>>
-  delete: <R = unknown, E = TFetcherServerError>(url: string, body?: any, headers?: THeaders, options?: TFetcherOptions) => Promise<TFetcherReturn<R, E>>
+  get: <R = unknown, E = unknown>(url: string, headers?: THeaders, options?: TFetcherOptions) => Promise<TFetcherReturn<R, E>>
+  post: <R = unknown, E = unknown>(url: string, body?: any, headers?: THeaders, options?: TFetcherOptions) => Promise<TFetcherReturn<R, E>>
+  delete: <R = unknown, E = unknown>(url: string, body?: any, headers?: THeaders, options?: TFetcherOptions) => Promise<TFetcherReturn<R, E>>
 };
 
 export type TFetcherReturn<D, E> = {

@@ -19,10 +19,6 @@ export default function ProjectDataBox(props: TProjectDataBoxProps): JSX.Element
 				<p>{props.project.updatedAt}</p>
 			</div>
 			<div className="fr-c-sp-xs">
-				<p>Owners:</p>
-				<p>{props.project.owners.length}</p>
-			</div>
-			<div className="fr-c-sp-xs">
 				<p>Contributors:</p>
 				<p>{props.project.contributors.length}</p>
 			</div>

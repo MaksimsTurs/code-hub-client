@@ -1,4 +1,4 @@
-import type { TFetcher, THeaders, TFormatedInit, TFetcherOptions, TFetcherReturn, TFetcherServerError } from "./fetcher.util.type";
+import type { TFetcher, THeaders, TFormatedInit, TFetcherOptions, TFetcherReturn } from "./fetcher.util.type";
 
 import formatUrl from "./format-url.util";
 import formatInit from "./format-init.util";
@@ -6,7 +6,7 @@ import getDataFromResponse from "./get-data-from-response.util";
 
 const fetcher: TFetcher = {
   base: undefined,
-  get: async function<R, E = TFetcherServerError>(url: string, headers?: THeaders, options?: TFetcherOptions): Promise<TFetcherReturn<R, E>> {
+  get: async function<R = unknown, E = unknown>(url: string, headers?: THeaders, options?: TFetcherOptions): Promise<TFetcherReturn<R, E>> {
 		try {
 			const initData: TFormatedInit = formatInit(undefined, headers);
 			const response: Response = await fetch(formatUrl(this.base, url), {
@@ -20,7 +20,7 @@ const fetcher: TFetcher = {
 			throw error;
 		}
 	},
-  post: async function<R, E = TFetcherServerError>(url: string, body?: any, headers?: THeaders, options?: TFetcherOptions): Promise<TFetcherReturn<R, E>> {
+  post: async function<R = unknown, E = unknown>(url: string, body?: any, headers?: THeaders, options?: TFetcherOptions): Promise<TFetcherReturn<R, E>> {
 		try {
 			const initData: TFormatedInit = formatInit(body, headers);
 			const response: Response = await fetch(formatUrl(this.base, url), {
@@ -35,7 +35,7 @@ const fetcher: TFetcher = {
 			throw error;
 		}
 	},
-  delete: async function<R, E = TFetcherServerError>(url: string, body?: any, headers?: THeaders, options?: TFetcherOptions): Promise<TFetcherReturn<R, E>> {
+  delete: async function<R = unknown, E = unknown>(url: string, body?: any, headers?: THeaders, options?: TFetcherOptions): Promise<TFetcherReturn<R, E>> {
 		try {
 			const initData: TFormatedInit = formatInit(body, headers);
 			const response: Response = await fetch(formatUrl(this.base, url), {

@@ -2,7 +2,7 @@ import type { JSX } from "react";
 import type { LazyExoticComponent } from "react";
 
 import Loader from "./Laoder.page.tsx";
-import Layout from "@component/Layout/Layout.component";
+import Document from "@component/Document/Document.component";
 import ProtectRoute from "@hook/use-auth/Protect-Route.component.tsx";
 
 import useAuth from "@hook/use-auth/use-auth.hook.ts";
@@ -28,9 +28,11 @@ export default function PageLayout(): JSX.Element {
 
 	return(
 		<ProtectRoute redirectUrl="/" or={[account]}>
-			<Layout loader={<Loader/>} metadata={Metadata}>
+			<Document 
+				loader={<Loader/>} 
+				Metadata={Metadata}>
 		  	<Page/>
-			</Layout>
+			</Document>
 		</ProtectRoute>
 	);
 };

@@ -41,7 +41,6 @@ export default function Page(): JSX.Element {
 		});
 
 		if(!response.error && response.data) {
-			console.log(response.data)
 			return response.data;
 		}
 

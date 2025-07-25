@@ -1,14 +1,15 @@
 import type { TUseFetchCacheMap, TUseFetchCacheState } from "@reducer/use-fetch/use-fetch.slice.type";
 
-import getStateFromCache from "./get-state-from-cache.util";
+export default function collectStateData<R = unknown, E = unknown>(currDep: string, prevDep: string, cache: TUseFetchCacheMap): TUseFetchCacheState<R, E> {
+	const currState = cache[currDep]?.state as TUseFetchCacheState<R, E> | undefined;
+	const prevState = cache[prevDep]?.state as TUseFetchCacheState<R, E> | undefined;
 
-export default function collectStateData(currDep: string, prevDep: string, cache: TUseFetchCacheMap): TUseFetchCacheState {
-	const prevState = cache[prevDep]?.state;
-	const currState = getStateFromCache(cache[currDep]?.state);
-	
-	if(!currState && prevState) {
-		return {...prevState, isLoading: false, isPending: true };
-	}
+	const state: TUseFetchCacheState<R, E> = {
+		isPending: prevState?.isPending || currState?.isPending || true,
+		isLoading: (!prevState?.isLoading || !currState?.isLoading),
+		data: currState?.data || prevState?.data as R,
+		error: currState?.error || prevState?.error as E
+	};
 
-	return {...currState, data: prevState?.data, isLoading: false };
-}
+	return currState ? currState : state;
+};

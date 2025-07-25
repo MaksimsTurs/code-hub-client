@@ -12,13 +12,14 @@ import getStateFromCache from "./utils/get-state-from-cache.util";
 
 export default function useMutate<R, B, S>(key: string, func: TUseMutateFunction<R, B, S>): TUseMutateReturn<S> {
 	const dispatch = useDispatch<TStoreDispatch>();
-	const store = useSelector<TStoreRootState, TUseFetchSliceState>(state => state.useFetch);
+	const { cache } = useSelector<TStoreRootState, TUseFetchSliceState>(state => state.useFetch);
 	const prevKey: RefObject<string> = useRef<string>(key);
 
 	return {
-		...getStateFromCache<S>(store.cache[key]?.state),
+		// @ts-ignore
+		...getStateFromCache<S>(cache[key]?.state),
 		mutate: function<B>(body: B): void {
-			dispatch(mutate({ newKeys: [key], prevKeys: [prevKey.current], func, body, currState: store.cache[key]?.state.data }));
+			dispatch(mutate({ currKeys: [key], prevKeys: [prevKey.current], func, body, currState: cache[key]?.state.data }));
 			prevKey.current = key;
 		}
 	}

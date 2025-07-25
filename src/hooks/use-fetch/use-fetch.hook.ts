@@ -6,13 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { invalidateCache, setNamedStateError } from "@reducer/use-fetch/use-fetch.slice";
 
+import useRequest from "./use-request.hook";
+
 export default function useFetch(): TUseFetchReturn {
 	const dispatch = useDispatch<TStoreDispatch>();
 	const { cache } = useSelector<TStoreRootState, TUseFetchSliceState>(state => state.useFetch);
 
 	return {
-		getNamedState: function<R = any>(name: string): TUseFetchCacheState<R> | undefined {
-			return cache[name]?.state;
+		getNamedState: function<R = unknown, E = unknown>(name: string): TUseFetchCacheState<R, E> | undefined {
+			return cache[name]?.state as TUseFetchCacheState<R, E> | undefined;
 		},
 		setNamedStateError: function(name: string, error: unknown): void {
 			dispatch(setNamedStateError({ name, error }))
@@ -21,4 +23,8 @@ export default function useFetch(): TUseFetchReturn {
 			dispatch(invalidateCache(name));
 		}
 	};
+};
+
+export {
+	useRequest
 };

@@ -3,9 +3,9 @@ import {
 	G_FETCHER_REGEXP_TEXT_CONTENT 
 } from "./REGEXP.const";
 
-import type { TFetcherReturn, TFetcherServerError } from "./fetcher.util.type";
+import type { TFetcherReturn } from "./fetcher.util.type";
 
-export default async function getDataFromResponse<R = any, E = TFetcherServerError>(response: Response): Promise<TFetcherReturn<R, E>> {
+export default async function getDataFromResponse<R = unknown, E = unknown>(response: Response): Promise<TFetcherReturn<R, E>> {
 	const contentType: string = response.headers.get("Content-Type")!;
 
 	let data: any = undefined;

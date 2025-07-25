@@ -1,8 +1,7 @@
 import type { JSX } from "react";
-import type { TAccountPageParams, TAccountInformationProps } from "../Page.page.type";
-import type { TFetcherServerError } from "@util/fetcher/fetcher.util.type";
+import type { TAccountPageParams, TAccountInformationProps, TNewAccessToken } from "../Page.page.type";
+import type { TFormatedError } from "@root/global.type";
 
-import { Fragment } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import selectors from "../scss/Account-Information.module.scss";
@@ -17,35 +16,35 @@ import { IconUserCircle, IconSetting, IconTrash2, IconLogOut } from "@component/
 
 import std from "@util/std/std.util";
 
-// TODO: Action loader.
-
-export default function PersonalInformation(props: TAccountInformationProps): JSX.Element {
-	const { signOut, deleteAccountData } = useAuth<unknown, Error>();
-	const { error, withAuth } = useWithAuth<unknown, TFetcherServerError>();
+export default function AccountInformation(props: TAccountInformationProps): JSX.Element {
+	const { signOut, deleteAccountData, error: authError } = useAuth<unknown, Error>();
+	const { withAuth, error: withAuthError } = useWithAuth<unknown, TFormatedError>();
 	const { confirm } = useConfirm();
 
 	const redirect = useNavigate();
 	const params = useParams<TAccountPageParams>();
 
 	const logOut = async (): Promise<void> => {
-		if(await signOut("account/sign-out")) {
+		const isSignOuted: boolean = await signOut("account/sign-out");
+
+		if(isSignOuted) {
 			redirect("/");
 		}
 	};
 
 	const changeAccountData = (): void => {
 		redirect(`/account/${params.accountId}/setting`);
-	}
+	};
 
 	const deleteAccount = async (): Promise<void> => {
-		const isConfirmed = await confirm({ text: "Are you really going to delete your account?", title: "Delete Account?" });
+		const isConfirmed: boolean = await confirm<boolean>({ text: "Are you really going to delete your account?", title: "Delete Account?" });
 
 		if(!isConfirmed) {
-			return
+			return;
 		}
 
 		try {
-			await withAuth<any, { accessToken: string }>({
+			const response = await withAuth<unknown, TNewAccessToken>({
 				state: true,
 				refresh: {
 					url: "account/refresh-access-token",
@@ -56,51 +55,57 @@ export default function PersonalInformation(props: TAccountInformationProps): JS
 					url: `account/delete/${params.accountId}`,
 				},
 				formatError: function(error) {
-					if(error instanceof Error) {
-						return { code: 0, message: "Something goes wrong!" };
-					}
-	
 					if(std.object.inObject(["code", "message"], error)) {
 						// @ts-ignore
-						return { code: error.code, message: error.message };
+						return { code: error.code, message: error.message, type: "SERVER" };
 					}
-					
-					return { code: 0, message: "Unknown error!" };
+
+					if(error instanceof Error) {
+						return { message: "Something goes wrong!", type: "CLIENT" };
+					}
+	
+					return { message: "Unknown error!", type: "CLIENT" };
 				}
 			});
-		} finally {
-			deleteAccountData();
-			redirect("/");
-		}
+
+			if(!response.error) {
+				deleteAccountData();
+				redirect("/");
+			}
+		} finally {}
 	};
 
 	return(
-		<Fragment>
-			<section className="fc-n-n-xs">
-				<div className={selectors.personal_information_container}>
-					<div className="fc-n-n-xs">
-						<div className="fr-c-c-n">
-							<IconUserCircle width={120} height={120}/>
-						</div>
+		<section className={`fc-n-n-xs ${selectors.account_information_container}`}>
+			<div className={selectors.account_information_body}>
+				<div className="fc-n-n-xs">
+					<div className={`fc-c-c-xs ${selectors.account_data_container}`}>
+						<IconUserCircle width={120} height={120}/>
 						<div>
 							<h2>{props.account.name}</h2>
-							<p>{props.account.email}</p>
+							<p className={selectors.account_id}>{props.account._id}</p>
 						</div>
 					</div>
 				</div>
 				<div className="fr-n-n-xs">
-					<Button onClick={deleteAccount} className={selectors.personal_information_action_button}>
+					<Button 
+						className={selectors.account_action_button}
+						onClick={deleteAccount}>
 						<IconTrash2 width={24} height={24}/>
 					</Button>
-					<Button onClick={logOut} className={selectors.personal_information_action_button}>
+					<Button 
+						className={selectors.account_action_button}
+						onClick={logOut}>
 						<IconLogOut width={24} height={24}/>
 					</Button>
-					<Button onClick={changeAccountData} className={selectors.personal_information_action_button}>
+					<Button 
+						className={selectors.account_action_button}
+						onClick={changeAccountData}>
 						<IconSetting width={24} height={24}/>
 					</Button>
 				</div>
-				{error ? <ErrorBox message={error.message}/> : null}
-			</section>
-		</Fragment>
+			</div>
+			{(authError || withAuthError) ? <ErrorBox message={(authError || withAuthError)!.message}/> : null}
+		</section>
 	);
 };

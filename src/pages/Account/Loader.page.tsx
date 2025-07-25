@@ -10,16 +10,16 @@ export default function Loader(): JSX.Element {
 			<SkeletonSection layout="fc-n-n-xs">
 				<SkeletonBody layout="fc-n-n-xs" padding="1.5rem" width="18rem">
 					<SkeletonSection layout="fc-c-c-xs">
-						<SkeletonCircle width="6rem" height="6rem"/>
+						<SkeletonCircle width="7rem" height="7rem"/>
 					</SkeletonSection>
 						<SkeletonBox width="100%" height="2rem"/>
 						<SkeletonBox width="75%" height="1.2rem"/>
-				</SkeletonBody>
 				<SkeletonSection layout="fr-n-n-xs">
 					<SkeletonBox width="100%" height="2.5rem"/>
 					<SkeletonBox width="100%" height="2.5rem"/>
 					<SkeletonBox width="100%" height="2.5rem"/>
 				</SkeletonSection>
+				</SkeletonBody>
 			</SkeletonSection>
 			<SkeletonBody layout="fc-n-n-xs" padding="1.5rem" width="100%">
 				<SkeletonSection layout="fc-n-n-xs" className={selectors.skeleton_bordered}>

@@ -15,6 +15,13 @@
 	gap: $var-gap-xs;
 }
 
+.fc-c-c-n {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
 .fc-c-c-xs {
 	display: flex;
 	align-items: center;
@@ -56,9 +63,17 @@
 }
 
 .fc-c-n-m {
+	gap: $var-gap-m;
 	display: flex;
 	align-items: center;
 	justify-content: normal;
 	flex-direction: column;
-	gap: $var-gap-m;
+}
+
+.fc-c-n-xl {
+	gap: $var-gap-xl;
+	display: flex;
+	align-items: center;
+	justify-content: normal;
+	flex-direction: column;
 }

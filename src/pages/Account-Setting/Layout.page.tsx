@@ -1,49 +1,31 @@
 import type { LazyExoticComponent, JSX } from "react";
-import type { TUseRequestAllCallbackReturn } from "@root/hooks/use-fetch/use-request-all.hook.type.ts";
-import type { TAccount } from "@root/global.type.ts";
-import type { TUseFetchCacheState } from "@root/reducers/use-fetch/use-fetch.slice.type";
-import type { TAccountSettingPageParams } from "./Page.page.type.ts";
 
-import Layout from "@component/Layout/Layout.component";
+import Document from "@component/Document/Document.component";
 
-import fetcher from "@util/fetcher/fetcher.util.ts";
+import useAuth from "@hook/use-auth/use-auth.hook";
 
-import useAuth from "@hook/use-auth/use-auth.hook.ts";
-
-import { useParams } from "react-router-dom";
 import { Fragment, lazy } from "react";
 
-const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
+const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page"));
 
-function Metadata(data: Map<string, TUseFetchCacheState>): JSX.Element {
-	const params = useParams<TAccountSettingPageParams>();
-	const accountName: string | undefined = data.get(`user/${params.accountId}`)?.data?.name;
-
+function Metadata(): JSX.Element {
 	return(
 		<Fragment>
-			<title>{accountName || "Code Hub"}</title>
-			<meta name="description" content={`Account of ${accountName}.`}/>
-			<meta name="robots" content="index,follow"></meta>
+			<title>Change account data</title>
 		</Fragment>
 	);
 };
 
 export default function PageLayout(): JSX.Element {
-	const params = useParams<TAccountSettingPageParams>();
+	const { auth } = useAuth();
 	
-	useAuth().auth("account/auth");
-
-	const getAccountById = (): TUseRequestAllCallbackReturn<TAccount> => {
-		return fetcher.get<TAccount>(`account/${params.accountId}`);
-	};
+	auth("account/auth");
 
 	return(
-		<Layout 
+		<Document 
 			loader={<p>...</p>} 
-			metadata={Metadata} 
-			deps={[`user/${params.accountId}`]}
-			fetches={[getAccountById]}>
+			Metadata={Metadata}>
 		  <Page/>
-		</Layout>
+		</Document>
 	);
 };

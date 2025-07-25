@@ -345,9 +345,39 @@ export function IconSetting(props: TSVGIconProps): JSX.Element {
 			stroke="currentColor" 
 			strokeLinecap="round" 
 			strokeLinejoin="round"
+			viewBox="0 0 24 24"
 			{...props }>
 				<path d="M12 2h0a2 2 0 0 0-2 2v0a2 2 0 0 1-1 2H8a2 2 0 0 1-2 0h0a2 2 0 0 0-3 1h0a2 2 0 0 0 1 3h0a2 2 0 0 1 1 2v0a2 2 0 0 1-1 2h0a2 2 0 0 0-1 3h0a2 2 0 0 0 3 1h0a2 2 0 0 1 2 0h1a2 2 0 0 1 1 2v0a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v0a2 2 0 0 1 1-2h1a2 2 0 0 1 2 0h0a2 2 0 0 0 3-1h0a2 2 0 0 0-1-3h0a2 2 0 0 1-1-2v0a2 2 0 0 1 1-2h0a2 2 0 0 0 1-3h0a2 2 0 0 0-3-1h0a2 2 0 0 1-2 0h-1a2 2 0 0 1-1-2v0a2 2 0 0 0-2-2z"/>
 				<circle cx="12" cy="12" r="3"/>
 		</svg>
-	)
-}
+	);
+};
+
+export function IconCopy(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round"
+			viewBox="0 0 24 24"
+			{...props }>
+				<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+				<path d="m4 16-2-2V4l2-2h10l2 2"/>
+		</svg>
+	);
+};
+
+export function IconCheck(props: TSVGIconProps): JSX.Element {
+	return(
+		<svg width="24" height="24" 
+			fill="none" 
+			stroke="currentColor" 
+			strokeLinecap="round" 
+			strokeLinejoin="round"
+			viewBox="0 0 24 24"
+			{...props }>
+			<path d="M20 6 9 17l-5-5"/>
+		</svg>
+	);
+};

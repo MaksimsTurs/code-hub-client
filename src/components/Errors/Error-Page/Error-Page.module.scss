@@ -1,0 +1,37 @@
+@use "@scss/variabel" as *;
+@use "@scss/mixin" as *;
+
+.error_page_container {
+	width: 100%;
+	height: 100%;
+
+	.error_page_body {
+		padding: $var-padding-xxxxl;
+		background-color: #ffffff;
+		box-shadow: 15px 15px 0px 0px $var-color-white-hight-transition;
+		
+		.error_page_message {
+			color: $var-color-dark-red-middle-transparent;
+			font-size: clamp(calc($var-font-xxxxl), 1.5vw, calc($var-font-xxxxl * 5));
+			font-weight: bolder;
+		}
+
+		.error_page_message_support_suggestions {
+			border-top: 1px solid $var-color-black-hight-transparent;
+			padding-top: $var-padding-xl;
+			margin-top: $var-margin-m;
+
+			p {
+				color: #000000;
+			}
+
+			a {
+				color: $var-color-hell-blue;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}

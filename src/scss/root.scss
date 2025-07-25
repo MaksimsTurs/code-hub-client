@@ -7,6 +7,12 @@
 @use "./mixin" as *;
 @use "./variabel.scss" as *;
 
+.app_body {
+	flex-grow: 1;
+	overflow-y: auto;
+	height: 100vh;
+}
+
 .line {
 	display: flex;
 	gap: 0.1rem;

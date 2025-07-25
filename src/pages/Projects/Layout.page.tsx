@@ -1,17 +1,18 @@
 import type { LazyExoticComponent, JSX } from "react";
-import type { TCodeHubProject } from "@reducer/use-code-hub/use-code-hub.slice.type.ts";
-import type { TUseRequestAllCallbackReturn } from "@hook/use-fetch/use-request-all.hook.type";
+import type { TProject, TFormatedError } from "@root/global.type.ts";
 
-import Layout from "@component/Layout/Layout.component";
+import ErrorPage from "@component/Errors/Error-Page/Error-Page.component.tsx";
+import Document from "@component/Document/Document.component";
 import Loader from "./Loader.page.tsx";
 
-import useAuth from "@hook/use-auth/use-auth.hook.ts";
+import { useRequest } from "@hook/use-fetch/use-fetch.hook";
+import useAuth from "@hook/use-auth/use-auth.hook";
 
-import fetcher from "@util/fetcher/fetcher.util.ts";
+import getAllProjects from "./requests/get-all-projects.requests";
 
 import { lazy, Fragment } from "react";
 
-const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
+const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page"));
 
 function Metadata(): JSX.Element {
 	return(
@@ -24,15 +25,21 @@ function Metadata(): JSX.Element {
 };
 
 export default function PageLayout(): JSX.Element {
-	useAuth().auth("account/auth");
-		
-	const getAllProjects = async (): TUseRequestAllCallbackReturn<TCodeHubProject[]> => {
-		return await fetcher.get<TCodeHubProject[]>("project/all", undefined, { credentials: "include" });
-	};
+	const { auth } = useAuth();
+	const { isLoading, error } = useRequest<TProject[], TFormatedError>({
+		args: [],
+		callback: getAllProjects,
+		key: "project/all"
+	})
+
+	auth("account/auth");
 
 	return(
-		<Layout loader={<Loader/>} metadata={Metadata} deps={["project/all"]} fetches={[getAllProjects]}>
-		  <Page/>
-		</Layout>
+		<Document
+			isLoading={isLoading}
+			loader={<Loader/>} 
+			Metadata={Metadata}>
+		  {error ? <ErrorPage message={error.message} code={error.code}/> : <Page/>}
+		</Document>
 	);
 };

@@ -1,0 +1,8 @@
+@use "@scss/variabel" as *;
+@use "@scss/mixin" as *;
+
+.presentation_cards_container {
+	display: grid;
+	width: 40rem;
+	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}

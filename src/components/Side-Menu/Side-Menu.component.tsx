@@ -77,7 +77,7 @@ export default function SideMenu(): JSX.Element {
 					<p className={selectors.asside_link_name}>Create</p>
 				</SideMenuLink>
 				<SideMenuLink 
-					href={`/user/${account?._id}/projects`} 
+					href="/account/projects" 
 					aria-label="Link to site with you projects.">
 					<IconFolderDot strokeWidth={2} width={20} height={20}/>
 					<p className={selectors.asside_link_name}>Projects</p>

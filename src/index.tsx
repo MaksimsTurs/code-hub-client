@@ -15,7 +15,7 @@ import ConfirmModal from "@component/Modals/Confirm-Modal/Confirm-Modal.componen
 
 import Home from "@page/Home/Layout.page";
 import Projects from "@page/Projects/Layout.page";
-import Project from "@page/Project/Layout.page";
+// import Project from "@page/Project/Layout.page";
 import CreateProject from "@page/Create-Project/Layout.page";
 import SignUp from "@page/Sign-Up/Layout.page";
 import SignIn from "@page/Sign-In/Layout.page";
@@ -26,47 +26,36 @@ import fetcher from "./utils/fetcher/fetcher.util";
 
 // TODO: Add Shema markup for better SEO.
 // TODO: Make errors in use fetch hooks generic.
-
 // TODO: Rename use fetch actions folder to "actions".
+// TODO: Make Side menu for some devie widths fixed positioning.
 
 function App(): JSX.Element {
 	fetcher.base = import.meta.env.DEV ? "http://localhost:4000/" : "https://code-hub-server.vercel.app/";
 
 	return(
-		<main>
-			<Routes>
-				<Route index element={<Home/>}/>
+		<Routes>
+			<Route index element={<Home/>}/>
 
-				<Route path="/sign-up" element={<SignUp/>}/>
-				<Route path="/sign-in" element={<SignIn/>}/>
+			<Route path="/sign-up" element={<SignUp/>}/>
+			<Route path="/sign-in" element={<SignIn/>}/>
 
-				<Route path="/user/:userId/projects" element={<Projects/>}/>
-				<Route path="/account/:accountId" element={<Account/>}/>
-				<Route path="/account/:accountId/setting" element={<AccountSetting/>}/>
+			<Route path="/account/projects" element={<Projects/>}/>
+			<Route path="/account/:accountId" element={<Account/>}/>
+			<Route path="/account/:accountId/setting" element={<AccountSetting/>}/>
 
-				<Route path="/project/:projectId" element={<Project/>}/>
-				<Route path="/project/create" element={<CreateProject/>}/>
-			</Routes>
-		</main>
+			{/* <Route path="/project/:projectId" element={<Project/>}/> */}
+			<Route path="/project/create" element={<CreateProject/>}/>
+		</Routes>
 	);
 };
 
-createRoot(document.getElementById("root") as HTMLElement).render(
+createRoot(document.getElementById("app_container") as HTMLElement).render(
   <StrictMode>
 		<Provider store={store}>
 			<ErrorBoundary>
 				<BrowserRouter>
 					<SideMenu/>
-					<div 
-						id="main-container" 
-						style={{ 
-							flexGrow: 1, 
-							height: "100vh", 
-							overflowY: "auto", 
-							display: "flex", 
-							flexDirection: "column", 
-							gap: "0.5rem" 
-						}}>
+					<div className="fc-n-n-xs app_body">
 						<App/>
 						<Footer/>
 					</div>

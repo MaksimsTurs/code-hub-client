@@ -22,7 +22,7 @@ export default function ProjectsList(props: TProjectsListProps): JSX.Element {
 
 		setInfoBoxPos({ 
 			x: listRectRef.current!.right - clientX,
-			y: clientY - (listRectRef.current!.top - 25) // Move the element some px to bottom.
+			y: clientY + 30
 		});
 
 		infoBoxDataRef.current = props.projects[Number((event.target as HTMLLIElement).dataset.index)];
@@ -35,8 +35,8 @@ export default function ProjectsList(props: TProjectsListProps): JSX.Element {
 
 	useEffect(() => {
 		// TODO: Do this better.
-		const mainContinaer = document.getElementById("main-container")!;
-
+		const mainContinaer: HTMLDivElement = document.querySelector(".app_body")!;
+		
 		const changeListRectRef = (): void => {
 			listRectRef.current = listRef.current!.getBoundingClientRect();
 		}
@@ -49,7 +49,7 @@ export default function ProjectsList(props: TProjectsListProps): JSX.Element {
 
 		return() => {
 			mainContinaer.removeEventListener("scroll", changeListRectRef);
-		}
+		};
 	}, []);
 
 	const options = props.showDataBoxOnHover ? {

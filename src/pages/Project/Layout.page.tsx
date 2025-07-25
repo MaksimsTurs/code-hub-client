@@ -1,6 +1,6 @@
 import type { JSX, LazyExoticComponent } from "react";
 
-import Layout from "@component/Layout/Layout.component";
+import Document from "@component/Document/Document.component";
 
 import { lazy, Fragment } from "react";
 
@@ -18,8 +18,10 @@ function Metadata(): JSX.Element {
 
 export default function PageLayout(): JSX.Element {
 	return(
-		<Layout loader={<p>Loading</p>} metadata={Metadata}>
+		<Document 
+			loader={<p>Loading</p>} 
+			Metadata={Metadata}>
 		  <Page/>
-		</Layout>
+		</Document>
 	);
 };

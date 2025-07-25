@@ -1,20 +1,38 @@
 @use "@scss/variabel" as *;
 @use "@scss/mixin" as *;
 
-.personal_information_container {
-	@include component-container($var-padding-xl);
-	width: fit-content;
-}
+.account_information_container {
+	width: 20rem;
 
-.personal_information_action_button {
-	flex: 1;
-	width: 100%;
-
-	&:nth-child(1) {
-		background-color: $var-color-hell-red-hight-transparent;
-
-		&:hover {
-			background-color: $var-color-dark-red;
+	.account_information_body {
+		@include component-container($var-padding-xl);
+		
+		.account_data_container {
+			padding-bottom: $var-padding-m;
+			margin-bottom: $var-margin-m;
+			border-bottom: 1px solid #c0c0c033;
+		
+			h2 {
+				text-align: center;
+			}
+	
+			.account_id {
+				color: $var-color-white-hight-transition;
+				font-size: $var-font-l;
+			}
+		}
+		
+		.account_action_button {
+			flex: 1;
+			width: 100%;
+		
+			&:nth-child(1) {
+				background-color: $var-color-hell-red-hight-transparent;
+		
+				&:hover {
+					background-color: $var-color-dark-red;
+				}
+			}
 		}
 	}
 }

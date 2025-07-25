@@ -2,7 +2,7 @@
 @use "@scss/mixin" as *;
 
 .project_info_box {
-	@include abs-top-right(0%, 0%, 1, max-content, max-content);
+	@include fix-top-right(0%, 0%, 1, max-content, max-content);
 	background-color: $var-color-black-hight-transparent;
 	padding: $var-padding-l;
 	border-radius: $var-border-radius-xl;

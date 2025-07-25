@@ -3,7 +3,7 @@ import type { TErrorInputValidationProps } from "./Error-Input-Validation.compon
 
 import selectors from "./Error-Input-Validation.module.scss";
 
-import { IconCircleX } from "@root/components/Icons/SVG-Icons.component";
+import { IconCircleX } from "@component/Icons/SVG-Icons.component";
 
 export default function ErrorInputValidation(props: TErrorInputValidationProps): JSX.Element {
 	return(

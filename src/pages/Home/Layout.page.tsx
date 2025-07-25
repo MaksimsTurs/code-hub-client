@@ -1,13 +1,13 @@
 import type { LazyExoticComponent, JSX } from "react";
 
-import Layout from "@component/Layout/Layout.component";
 import Loader from "./Loader.page.tsx";
+import Document from "@component/Document/Document.component";
 
-import useAuth from "@hook/use-auth/use-auth.hook.ts";
+import useAuth from "@hook/use-auth/use-auth.hook";
 
 import { lazy, Fragment } from "react";
 
-const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
+const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page"));
 
 function Metadata(): JSX.Element {
 	return(
@@ -21,11 +21,15 @@ function Metadata(): JSX.Element {
 };
 
 export default function PageLayout(): JSX.Element {
-	useAuth().auth("account/auth");
+	const { auth } = useAuth();
+
+	auth("account/auth");
 
 	return(
-		<Layout loader={<Loader/>} metadata={Metadata}>
+		<Document 
+			loader={<Loader/>} 
+			Metadata={Metadata}>
 		  <Page/>
-		</Layout>
+		</Document>
 	);
 };

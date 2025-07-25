@@ -3,55 +3,71 @@
 
 .presentation_container {
 	@include component-container($var-padding-l $var-padding-xxxxl);
+	height: fit-content;
+	
+	.presentation_body {
+		max-width: 40rem;
+		min-width: 0;
 
-	.presentation_img {
-		border-radius: $var-border-radius-xxxxl;
-		width: 100%;
-		height: 12rem;
-		object-fit: cover;
-		box-shadow: 0 0 10px 2px #00000066;
-	}
-
-	.presentation_description {
-		text-align: center;
-		width: 40rem;
-	}
-
-	.presintation_actions_container {
-		margin-top: $var-margin-l;
-
-		.presintation_link {
-			padding: $var-padding-l $var-padding-xxl;
-			color: $var-color-hell-blue;
-			transition: border-radius $var-transition-time-s;
-			animation: lightning $var-transition-time-xxxxl infinite;
-			border: 1px solid $var-color-hell-blue;
-			position: relative;
-			overflow: hidden;
-			z-index: 0;
-
-			&:hover::after {
-				transition: backdrop-filter $var-transition-time-s;
-				backdrop-filter: blur(50px);
+		.presentation_head {
+			img {
+				width: calc($var-size-xxxxl * 1.5);
 			}
-			
-			&:hover {
+
+			h1 {
+				font-size: calc($var-font-xxxxl * 2.5);
+				background-image: linear-gradient(40deg, $var-color-hell-salat 25%, $var-color-hell-blue 75%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+			}
+		}
+
+		.presentation_imgs {
+			img {
+				height: 10rem;
+				max-width: 100%;
+				border-radius: $var-border-radius-l;
+				box-shadow: $var-box-shadow-container;
+				transition: transform $var-transition-time-s;
+			}
+		}
+
+		.presentation_actions_container {
+			margin-top: $var-margin-l;
+
+			.presentation_link {
+				padding: $var-padding-l $var-padding-xxl;
+				color: $var-color-hell-blue;
 				transition: border-radius $var-transition-time-s;
-				border-radius: $var-border-radius-xxxxl;
-			}
+				animation: lightning $var-transition-time-xxxxl infinite;
+				border: 1px solid $var-color-hell-blue;
+				position: relative;
+				overflow: hidden;
+				z-index: 0;
 
-			&::before {
-				content: "";
-				@include abs-top-left(0%, -50%, -1, 1rem, 200%);
-				animation: background-position-translation $var-transition-time-xxl infinite;
-				transform: rotate(-45deg) $var-translate-center-center;
-				background-color: $var-color-hell-blue;
-			}
+				&:hover::after {
+					transition: backdrop-filter $var-transition-time-s;
+					backdrop-filter: blur(50px);
+				}
+				
+				&:hover {
+					transition: border-radius $var-transition-time-s;
+					border-radius: $var-border-radius-xxxxl;
+				}
 
-			&::after {
-				content: "";
-				@include abs-top-left(0%, 0%, -1);
-				transition: backdrop-filter $var-transition-time-s;
+				&::before {
+					content: "";
+					@include abs-top-left(0%, -50%, -1, 1rem, 200%);
+					animation: background-position-translation $var-transition-time-xxl infinite;
+					transform: rotate(-45deg) $var-translate-center-center;
+					background-color: $var-color-hell-blue;
+				}
+
+				&::after {
+					content: "";
+					@include abs-top-left(0%, 0%, -1);
+					transition: backdrop-filter $var-transition-time-s;
+				}
 			}
 		}
 	}

@@ -1,6 +1,11 @@
+# nodejs
 node_modules
 package-lock.json
 bun.lockb
+
+# folders
 output
+ignore
+
+# some files with important information
 NOTES.txt
-logo.jpg

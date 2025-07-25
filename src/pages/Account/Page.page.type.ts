@@ -7,3 +7,7 @@ export type TAccountInformationProps = {
 export type TAccountPageParams = {
 	accountId: string
 };
+
+export type TNewAccessToken = {
+	accessToken: string
+};

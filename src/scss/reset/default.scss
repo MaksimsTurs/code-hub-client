@@ -28,16 +28,13 @@ body {
 }
 
 main {
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
 	height: auto;
 }
 
 header, 
 main, 
 footer {
-	width: 100%;
+	flex-grow: 1;
 }
 
 a {

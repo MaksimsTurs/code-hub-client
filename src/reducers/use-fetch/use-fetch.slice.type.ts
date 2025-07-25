@@ -1,56 +1,57 @@
 import type { TUseMutateFunction } from "@hook/use-fetch/use-mutate.hook.type";
-import type { TUseFetchCallback } from "@hook/use-fetch/use-fetch.hook.type";
-import type { TFetcherReturn } from "@util/fetcher/fetcher.util.type";
+import type { TUseRequestCallback } from "@root/hooks/use-fetch/use-request.hook.type";
 
 export type TUseFetchSliceState = {
-	globalIsLoading: boolean
-	globalIsPending: boolean
-	globalError?: unknown
 	cache: TUseFetchCacheMap
 };
 
-export type TUseFetchCacheMap = Record<string, TUseFetchCacheItem<any>>;
+//
+// Cache state and items types.
+//
 
-export type TUseFetchCacheItem<T = any> = {
-	state: TUseFetchCacheState<T>
+export type TUseFetchCacheMap = Record<string, TUseFetchCacheItem<unknown, unknown>>;
+
+export type TUseFetchCacheItem<D = unknown, E = unknown> = {
+	state: TUseFetchCacheState<D, E>
+	// ...something else...
 };
 
-export type TUseFetchCacheState<T = any> = {
+export type TUseFetchCacheState<D = unknown, E = unknown> = {
 	isLoading: boolean
 	isPending: boolean
-	error?: unknown
-	data?: T | null
+	error?: E | null
+	data?: D | null
 };
 
-export type TUseFetchActionsReturn<R = any> = {
-	newKeys: string[]
+//
+// Common return types.
+//
+
+export type TUseFetchActionsReturn<D = any> = {
+	currKeys: string[]
 	prevKeys: string[]
-	data: R
+	data: D
 };
 
-export type TUseRequestAllActionParam = {
-	newKeys: string[]
+//
+// Request hook types.
+//
+
+export type TUseRequestActionParams = {
+	currKeys: string[]
 	prevKeys: string[]
-	promises: Promise<TFetcherReturn<unknown, unknown>>[]
+	args: any[]
+	callback: TUseRequestCallback<unknown, unknown>
 };
 
-export type TUseRequestAllActionReturnData = PromiseSettledResult<TFetcherReturn<unknown, unknown>>[];
-
-export type TUseRequestActionParam = {
-	newKeys: string[]
-	prevKeys: string[]
-	func: TUseFetchCallback
-};
+//
+// Mutate
+//
 
 export type TUseMutateActionParam = {
-	newKeys: string[]
+	currKeys: string[]
 	prevKeys: string[]
 	func: TUseMutateFunction<any, any, any>
 	body: any
 	currState: any
-}
-
-export type TUseFetchErrorResponse = {
-	message: string
-	code: number
 };

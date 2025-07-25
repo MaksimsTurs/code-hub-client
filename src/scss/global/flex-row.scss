@@ -84,6 +84,13 @@
 	gap: $var-gap-xs;
 }
 
+.fr-c-sp-xxxxl {
+	gap: $var-gap-xxxxl;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
 .fr-n-fe-n {
 	display: flex;
 	align-items: normal;

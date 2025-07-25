@@ -4,21 +4,32 @@ import type { TAccount } from "@root/global.type";
 
 import AccountInformation from "./components/Account-Information.component";
 import ProjectsList from "@component/Projects-List/Projects-List.component";
+import Button from "@component/Button/Button.component";
 
 import useFetch from "@hook/use-fetch/use-fetch.hook";
 
-import { useParams } from "react-router-dom";
+import selectors from "./Page.module.scss";
+
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function Page(): JSX.Element {
 	const params = useParams<TAccountPageParams>();
+	const navigate = useNavigate();
 	const { getNamedState } = useFetch();
 
-	const accountData = getNamedState<TAccount>(`user/${params.accountId}`);
+	const accountData = getNamedState<TAccount, unknown>(`account/${params.accountId}`);
 
+	const showAllAccountProjects = (): void => {
+		navigate("/account/projects");
+	};
+	
 	return(
-		<div className="fr-n-n-xs">
+		<main className="fr-n-n-xs">
 			<AccountInformation account={accountData?.data!}/>
-			<ProjectsList showDataBoxOnHover projects={accountData?.data?.projects || []}/>
-		</div>
+			<div className={`fc-n-n-xs ${selectors.account_projects_container}`}>
+				<ProjectsList showDataBoxOnHover projects={accountData?.data?.projects || []}/>
+				{accountData?.data?.projects.length === 5 ? <Button onClick={showAllAccountProjects}>Show more</Button> : null}
+			</div>
+		</main>
 	);
 };

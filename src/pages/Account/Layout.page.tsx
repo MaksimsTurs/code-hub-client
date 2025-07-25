@@ -1,50 +1,46 @@
 import type { LazyExoticComponent, JSX } from "react";
-import type { TUseRequestAllCallbackReturn } from "@hook/use-fetch/use-request-all.hook.type.ts";
-import type { TAccount } from "@root/global.type.ts";
-import type { TUseFetchCacheState } from "@reducer/use-fetch/use-fetch.slice.type";
-import type { TAccountPageParams } from "./Page.page.type.ts";
+import type { TAccountPageParams } from "./Page.page.type";
+import type { TAccount, TFormatedError } from "@root/global.type";
 
-import Layout from "@component/Layout/Layout.component";
-import Loader from "./Loader.page.tsx";
+import Document from "@component/Document/Document.component";
+import ErrorPage from "@component/Errors/Error-Page/Error-Page.component";
+import Loader from "./Loader.page";
 
-import fetcher from "@util/fetcher/fetcher.util.ts";
-
-import useAuth from "@hook/use-auth/use-auth.hook.ts";
+import { useRequest } from "@hook/use-fetch/use-fetch.hook";
+import useAuth from "@hook/use-auth/use-auth.hook";
 
 import { useParams } from "react-router-dom";
 import { Fragment, lazy } from "react";
 
-const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page.tsx"));
+import getAccountById from "./requests/get-account-by-id.request";
 
-function Metadata(data: Map<string, TUseFetchCacheState>): JSX.Element {
-	const params = useParams<TAccountPageParams>();
-	const accountName: string | undefined = data.get(`user/${params.accountId}`)?.data?.name;
-
-	return(
-		<Fragment>
-			<title>{accountName || "Code Hub"}</title>
-			<meta name="description" content={`Account of ${accountName}.`}/>
-			<meta name="robots" content="index,follow"></meta>
-		</Fragment>
-	);
-};
+const Page: LazyExoticComponent<any> = lazy(() => import("./Page.page"));
 
 export default function PageLayout(): JSX.Element {
 	const params = useParams<TAccountPageParams>();
-	
-	useAuth().auth("account/auth");
+	const { auth } = useAuth();
+	const { isLoading, data, error } = useRequest<TAccount, TFormatedError>({
+		args: [params.accountId],
+		key: `account/${params.accountId}`,
+		callback: getAccountById,
+	});
 
-	const getAccountById = (): TUseRequestAllCallbackReturn<TAccount> => {
-		return fetcher.get<TAccount>(`account/${params.accountId}`);
-	};
+	auth("account/auth");
 
 	return(
-		<Layout 
-			loader={<Loader/>} 
-			metadata={Metadata} 
-			deps={[`user/${params.accountId}`]}
-			fetches={[getAccountById]}>
-		  <Page/>
-		</Layout>
+		<Document
+			isLoading={isLoading}
+			loader={<Loader/>}
+			Metadata={() => {
+				return(
+					<Fragment>
+						<title>{data?.name}</title>
+						<meta name="description" content={`Account of ${data?.name}.`}/>
+						<meta name="robots" content="index,follow"></meta>
+					</Fragment>
+				);
+			}}>
+		  {error ? <ErrorPage message={error.message} code={error.code}/> : <Page/>}
+		</Document>
 	);
 };
